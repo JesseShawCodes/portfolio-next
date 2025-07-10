@@ -1,5 +1,10 @@
 import "./globals.css";
 import "./App.scss";
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+import NavBar from "./components/NavBar";
+import { ThemeProvider } from "./context/ThemeContext";
+import Footer from "./components/Footer";
 
 export const metadata = {
   title: "Create Next App",
@@ -10,9 +15,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <ThemeProvider>
         <div className="d-flex flex-column min-vh-100">
-          {children}
+          <NavBar />
+          <main className="flex-grow-1">
+            {children}
+          </main>
+          <Footer />
         </div>
+        </ThemeProvider>
       </body>
     </html>
   );
