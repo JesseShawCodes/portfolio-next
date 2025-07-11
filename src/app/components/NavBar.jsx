@@ -1,8 +1,8 @@
 "use client"
 import { React } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import ThemeToggleButton from './ThemeToggleButton';
+import NavLink from './NavLink';
 
 function NavBar() {
   return (
@@ -16,12 +16,8 @@ function NavBar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link href="/about" className="nav-link active">About</Link>
-            </li>
-            <li className="nav-item">
-              <Link href="/search" className="nav-link active">Search</Link>
-            </li>
+            <NavLink name="Resume" link="/resume" />
+            <NavLink name="Portfolio" link="/portfolio" />
             <li className="nav-item">
               <ThemeToggleButton />
             </li>

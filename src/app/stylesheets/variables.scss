@@ -2,11 +2,13 @@
 :root,
 [data-bs-theme="light"] {
   /*Background (bg) colors*/
-  --color-dadgad-bg-gradient: rgb(252, 235, 48);
+  --color-dadgad-bg-gradient-start: rgb(245, 255, 245); /* Pale Greenish White */
+  --color-dadgad-bg-gradient-end: rgb(230, 245, 230);   /* Very Light Green */
 }
 
 // Dark Theme Colors
-[data-bs-theme="dark"]  {
+[data-bs-theme="dark"] {
   /*Background (bg) colors*/
-  --color-dadgad-bg-gradient: rgb(255, 6, 248);
+  --color-dadgad-bg-gradient-start: rgb(25, 45, 45);   /* Dark Teal-Grey */
+  --color-dadgad-bg-gradient-end: rgb(40, 70, 70);     /* Slightly Lighter Teal-Grey */
 }
