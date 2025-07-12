@@ -1,4 +1,5 @@
 @use 'stylesheets/custom.scss';
+@use 'stylesheets/variables.scss';
 
 body {
   transition: background-color 0.5s ease, color 0.5s ease, background-image 0.5s ease;
