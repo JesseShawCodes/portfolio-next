@@ -5,6 +5,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import NavBar from "./components/NavBar";
 import { ThemeProvider } from "./context/ThemeContext";
 import Footer from "./components/Footer";
+import BootstrapClient from "./components/BootstrapClient";
 
 export const metadata = {
   title: "Create Next App",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
           <Footer />
         </div>
         </ThemeProvider>
+        <BootstrapClient />
       </body>
     </html>
   );
