@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 
 function HomePage({
   homeHeading = 'My name is Jesse. I am a Full Stack Developer',
-  homeSubHeading = 'Pick your favorites, round by round. Crown your winner. Share your bracket with the world.',
-  homeContent = 'Turn a musician’s discography into your own personal tournament. We rank the songs—your job is to pick the winners until one song is left standing. Once your bracket is complete, export and share it with friends.',
+  homeSubHeading = 'From logic to layout, my goal is to build experiences in my work that feel good to use and are fun to share.',
+  homeContent = "I am a Full Stack Developer currently working on a Learning Management System application at Amentum. I love coding not just for the challenge, but because it is a form of creation - taking ideas from sketch to screen. Whether it's crafting clean APIs or intuitive front ends, I enjoy the whole stack. I am passionate about collaborating with developers, designers, and big thinkers who care about quality and aren't afraid to experiment. If you are someone who builds with curiosity and purpose, we will probably get along just great.",
 }) {
   return (
     <div className="min-vh-100 d-flex flex-column justify-content-center bg-gradient-my-gradient">

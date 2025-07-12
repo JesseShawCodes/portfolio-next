@@ -16,8 +16,12 @@ function NavBar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <NavLink name="Resume" link="/resume" />
-            <NavLink name="Portfolio" link="/portfolio" />
+            {
+              /*
+              <NavLink name="Resume" link="/resume" />
+              <NavLink name="Portfolio" link="/portfolio" />
+              */
+            }
             <li className="nav-item">
               <ThemeToggleButton />
             </li>
