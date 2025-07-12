@@ -21,7 +21,7 @@ async function ResumePage({ pageHeading = 'This is the Resume page', pageContent
                 <h2>{project.title}</h2>
                 <h3>{project.company}</h3>
                 <h4>{project.startdate} - {project.enddate}</h4>
-                <Image src={project.logo[0].url} width={200} height={100} alt={'Amentum Logo'}/>
+                <Image src={project.logo[0].url} width={200} style={{height: 'auto'}} alt={'Amentum Logo'}/>
               </div>
 
               <div className="card-body p-6">
