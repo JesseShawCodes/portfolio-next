@@ -1,4 +1,6 @@
 // Default (Light) Theme Colors
+$dark-teal-grey: rgb(25, 45, 45);
+
 :root,
 [data-bs-theme="light"] {
   /*Background (bg) colors*/
@@ -9,6 +11,6 @@
 // Dark Theme Colors
 [data-bs-theme="dark"] {
   /*Background (bg) colors*/
-  --color-dadgad-bg-gradient-start: rgb(25, 45, 45);   /* Dark Teal-Grey */
+  --color-dadgad-bg-gradient-start: $dark-teal-grey;   /* Dark Teal-Grey */
   --color-dadgad-bg-gradient-end: rgb(40, 70, 70);     /* Slightly Lighter Teal-Grey */
 }

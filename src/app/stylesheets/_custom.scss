@@ -6,6 +6,8 @@
 @import "../../../node_modules/bootstrap/scss/mixins";
 @import "../../../node_modules/bootstrap/scss/utilities";
 
+@import "variables.scss";
+
 
 $utilities: map-merge(
   $utilities,
@@ -16,6 +18,14 @@ $utilities: map-merge(
       values: (
         "my-gradient": linear-gradient(to bottom, var(--bs-body-bg) 0%, var(--color-dadgad-bg-gradient-start) 70%, var(--color-dadgad-bg-gradient-end) 100%),
         "my-gradient-footer": linear-gradient(to bottom, var(--color-dadgad-bg-gradient-end) 0%, var(--bs-body-bg) 90%, var(--bs-body-bg) 100%)
+      )
+    ),
+    background-color: (
+      property: background-color,
+      class: bg,
+      values: (
+        "teal": var(--color-dadgad-bg-gradient-end),
+        "pink": pink
       )
     )
   )
