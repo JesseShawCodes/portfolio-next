@@ -1,6 +1,13 @@
 import Image from "next/image";
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 function WorkExperienceCard({ project, index }) {
+  const content = [
+    {
+      type: 'list',
+      children: [{ type: 'text', text: project.description }],
+    },
+  ];
   return (
     <div className='card my-4' key={`project-${index}`}>
       <div className='card-header bg-card-header text-white'>
@@ -16,7 +23,7 @@ function WorkExperienceCard({ project, index }) {
       </div>
 
       <div className="card-body p-6">
-        {project.description}
+        <BlocksRenderer content={content} />
       </div>
       {/*
       footer section to be added
