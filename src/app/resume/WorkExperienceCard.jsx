@@ -14,12 +14,19 @@ function WorkExperienceCard({ project, index }) {
         <h2>{project.title}</h2>
         <h3>{project.company}</h3>
         <h4>{project.startdate} - {project.enddate ? project.enddate : "Present"}</h4>
+        <div style={{'maxWidth': '200px', 'position': 'relative', 'height': '100px'}}>
         {
           project.logo ?
-          <Image src={project.logo[0].url} width={200} height={100} alt={'Amentum Logo'}/>
+          <Image 
+            src={project.logo[0].url} 
+            alt={`${project.company} Logo`}
+            fill
+            style={{ objectFit: 'contain' }}
+          />
           :
           null
         }
+        </div>
       </div>
 
       <div className="card-body p-6">

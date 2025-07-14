@@ -8,7 +8,7 @@ $dark-teal-grey: rgb(25, 45, 45);
   --color-dadgad-bg-gradient-end: rgb(230, 245, 230);   /* Very Light Green */
 
   /* Card Header Background for Light Theme */
-  --color-card-header-bg: rgb(50, 90, 90); /* A muted, dark teal-green */
+  --color-card-header-bg: rgb(50, 90, 90, 0.9); /* A muted, dark teal-green */
   --color-card-header-text: white; /* White text for contrast */
 }
 
@@ -19,6 +19,6 @@ $dark-teal-grey: rgb(25, 45, 45);
   --color-dadgad-bg-gradient-end: rgb(40, 70, 70);     /* Slightly Lighter Teal-Grey */
 
   /* Card Header Background for Dark Theme */
-  --color-card-header-bg: rgb(80, 130, 130); /* A medium, slightly desaturated teal */
+  --color-card-header-bg: rgb(80, 130, 130, 0.2); /* A medium, slightly desaturated teal */
   --color-card-header-text: white; /* White text for contrast */
 }

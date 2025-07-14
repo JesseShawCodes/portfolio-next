@@ -4,6 +4,7 @@ import WorkExperienceCard from './WorkExperienceCard';
 
 async function ResumePage({ pageHeading = 'This is the Resume page', pageContent = 'sfsafs' }) {
   const projects = await getProjects();
+  projects.sort((a, b) =>  b.startdate.localeCompare(a.startdate));
 
   return (
     <div className="antialiased bg-gradient-my-gradient d-flex flex-column min-vh-100">
