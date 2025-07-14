@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Image from 'next/image';
 import WorkExperienceCard from './WorkExperienceCard';
 
 async function ResumePage({ pageHeading = 'This is the Resume page', pageContent = 'sfsafs' }) {
-
-
   const projects = await getProjects();
 
   return (
