@@ -11,7 +11,7 @@ export const metadata = {
   description: "Full stack developer with expertise in React, Ruby on Rails, and headless CMS technologies. Let's build something great together!",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
