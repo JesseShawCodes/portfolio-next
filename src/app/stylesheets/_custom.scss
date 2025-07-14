@@ -25,7 +25,7 @@ $utilities: map-merge(
       class: bg,
       values: (
         "teal": var(--color-dadgad-bg-gradient-end),
-        "pink": pink
+        "card-header": var(--color-card-header-bg)
       )
     )
   )
