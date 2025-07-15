@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import WorkExperienceCard from './WorkExperienceCard';
+import DownloadButton from '../components/DownloadButton';
 
-async function ResumePage({ pageHeading = 'This is the Resume page', pageContent = 'sfsafs' }) {
+async function ResumePage({ pageHeading = 'Resume' }) {
   const projects = await getProjects();
   projects.sort((a, b) =>  b.startdate.localeCompare(a.startdate));
-
+  console.log(projects);
   return (
     <div className="antialiased bg-gradient-my-gradient d-flex flex-column min-vh-100">
+
       <div className='container'>
         <h1>
           {pageHeading}
         </h1>
-        <p>
-          {pageContent}
-        </p>
+        <DownloadButton pdfUrl='/JesseShaw_Resume.pdf'/>
         {
           projects.map((project, index) => (
             <WorkExperienceCard key={index} project={project} index={index} />

@@ -12,9 +12,9 @@
 $utilities: map-merge(
   $utilities,
   (
-    "background-image": ( // NEW Utility for background-image property
+    "background-image": ( 
       property: background-image,
-      class: bg-gradient, // Using a different class prefix for clarity, e.g., 'bg-gradient-my-gradient'
+      class: bg-gradient,
       values: (
         "my-gradient": linear-gradient(to bottom, var(--bs-body-bg) 0%, var(--color-dadgad-bg-gradient-end) 70%, var(--color-dadgad-bg-gradient-end) 100%),
         "my-gradient-footer": linear-gradient(to bottom, var(--color-dadgad-bg-gradient-end) 0%, var(--bs-body-bg) 90%, var(--bs-body-bg) 100%)
