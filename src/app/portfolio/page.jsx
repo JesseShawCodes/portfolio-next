@@ -12,9 +12,7 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const octokit = new Octokit({
-    auth: process.env.REACT_APP_GH,
-  });
+  const octokit = new Octokit();
 
   useEffect(() => {
     (async () => {
