@@ -3,6 +3,7 @@ import React, {useRef, useState, useEffect} from "react";
 import P5Sketch from "./sketch";
 import Repo from "../components/Repo";
 import { Octokit } from "octokit";
+import Link from "next/link";
 
 export default function Page() {
   const p5Ref = useRef(null);
@@ -41,7 +42,7 @@ export default function Page() {
   }, []);
 
   if (isLoading) {
-    return 'Loading...';
+    return <div className="container">Loading...</div>;
   }
 
   const handleSketchReady = (p5Instance) => {
@@ -55,9 +56,9 @@ export default function Page() {
     */}
       <h1>Projects</h1>
       <div>
-        <p>My time is currently being taken up by my Full Time job at Amentum. But I do wanna make sure I am putting in extra time to keep up n new tools and work on some of my own projects to stay sharp.</p>
+        <p>My time is currently being taken up by my Full Time job at Amentum. But I do wanna make sure I am putting in extra time to keep up with new tools and work on some of my own projects to stay sharp.</p>
 
-        <p>One passion project I am working on right now is a music rating application built using React, Django, and a MySQL database. The Git Repository for that project can be found below (Music March Madness).</p>
+        <p>One passion project I am working on right now is a music rating application built using React, Django, and a MySQL database. The Git Repository for that project can be found below (Music March Madness). This application can be tested here: <Link href="https://dadgad.netlify.app/" target="_blank">Dadgad Live Application</Link></p>
 
         <p>If you would like to keep up with all of the other work I am doing outside of my work at Amentum, please check out my GitHub projects below</p>
         <div style={{ maxWidth: '1200px', margin: '0px auto' }}>

@@ -6,7 +6,7 @@ import DownloadButton from '../components/DownloadButton';
 async function ResumePage({ pageHeading = 'Resume' }) {
   const projects = await getProjects();
   projects.sort((a, b) =>  b.startdate.localeCompare(a.startdate));
-  console.log(projects);
+
   return (
     <div className="antialiased bg-gradient-my-gradient d-flex flex-column min-vh-100">
 
