@@ -17,11 +17,11 @@
     "@strapi/blocks-react-renderer": "^1.0.2",
     "bootstrap": "^5.3.7",
     "husky": "^9.1.7",
-    "next": "15.3.4",
+    "next": "15.4.1",
     "octokit": "^5.0.3",
     "p5": "^2.0.3",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "react-p5": "^1.4.1",
     "sass": "^1.86.0"
   },
@@ -30,6 +30,9 @@
     "@types/node": "24.0.13",
     "@types/react": "19.1.8",
     "eslint": "^9",
-    "eslint-config-next": "15.3.4"
+    "eslint-config-next": "15.4.1"
+  },
+  "overrides": {
+    "@types/react": "19.1.8"
   }
 }
