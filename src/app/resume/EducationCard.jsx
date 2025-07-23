@@ -3,16 +3,17 @@ import formatMyDate from "../services/services";
 function EducationCard({edu}) {
   return (
     <div className="card my-4">
-      <div className="card-header bg-card-header text-white">
-        <h2>{edu.schoolName}</h2>
-        <p>{edu.degree}</p>
+      <div className="d-flex justify-content-between card-header bg-card-header text-white">
+        <div>
+          <h2>{edu.schoolName}</h2>
+          <p>{edu.degree}</p>
+        </div>
+        <div className="text-end">
+          <p>{edu.field}</p>
+          <p>{formatMyDate(edu.startDate)} - {formatMyDate(edu.endDate)}</p>
+        </div>
       </div>
-      <div className="card-body p-6">
-        <ul>
-          <li>{edu.field}</li>
-          <li>{formatMyDate(edu.startDate)} - {formatMyDate(edu.endDate)}</li>
-        </ul>
-      </div>
+
     </div>
   );
 }
