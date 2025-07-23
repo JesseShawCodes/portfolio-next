@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
-import TechnologyButton from "../components/TechnologyItem";
+import TechnologyItem from "../components/TechnologyItem";
+import formatMyDate from "../services/services";
 
 function WorkExperienceCard({ project, index }) {
   const content = [
@@ -10,14 +11,6 @@ function WorkExperienceCard({ project, index }) {
     },
   ];
 
-  function formatMyDate(dateString) {
-    const date = new Date(dateString);
-
-    const year = date.getFullYear();
-    const month = date.toLocaleString('en-US', { month: 'long' });
-
-    return `${year} ${month}`;
-  }
   return (
     <div className='card my-4' key={`project-${index}`}>
       <div className='card-header bg-card-header text-white'>
@@ -49,7 +42,7 @@ function WorkExperienceCard({ project, index }) {
           <p>Technologies Used:</p>
           {
           project.technologies.map((item, index) => {
-            return <TechnologyButton name={item} key={`technology-${project.name}-${index}`} />
+            return <TechnologyItem name={item} key={`technology-${project.name}-${index}`} />
           })
           }
         </div>

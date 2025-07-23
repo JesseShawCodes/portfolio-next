@@ -1,7 +1,6 @@
 import { React } from 'react';
-import Link from 'next/link';
 
-function TechnologyButton({ name="React JS" }) {
+function TechnologyItem({ name="React JS" }) {
   return (
     <span className="badge rounded-pill text-bg-primary mx-1 p-2">
       {name}
@@ -9,4 +8,4 @@ function TechnologyButton({ name="React JS" }) {
   );
 }
 
-export default TechnologyButton;
+export default TechnologyItem;

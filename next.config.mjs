@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: `${process.env.NEXT_PUBLIC_API_ROOT_MEDIA}`,
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: `localhost`,
+        port: ''
       }
 
     ],
