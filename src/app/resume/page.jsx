@@ -30,7 +30,6 @@ async function ResumePage({ pageHeading = 'Resume' }) {
         }
         <h2>Education</h2>
         {
-      
           education.map((edu, index) => (
             <EducationCard key={index} edu={edu} index={index} />
           ))
@@ -60,8 +59,6 @@ async function getEducation() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/educations`, {
     cache: 'force-cache',
   });
-
-  console.log(res);
 
   const data = await res.json();
   return data.data;

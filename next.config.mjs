@@ -9,11 +9,11 @@ const nextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'http',
-        hostname: `localhost`,
-        port: ''
-      }
-
+        protocol: "http",
+        hostname: `${process.env.NEXT_PUBLIC_API_ROOT_MEDIA}`,
+        port: "1337",
+        pathname: "/**",
+      },
     ],
   },
 };
