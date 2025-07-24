@@ -6,3 +6,9 @@ export default function formatMyDate(dateString) {
 
   return `${year} ${month}`;
 }
+
+export function formatMyDateYear(dateString) {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  return `${year}`;
+}

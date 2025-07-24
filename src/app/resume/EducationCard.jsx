@@ -1,4 +1,4 @@
-import formatMyDate from "../services/services";
+import { formatMyDateYear } from "../services/services";
 
 function EducationCard({edu}) {
   return (
@@ -10,7 +10,7 @@ function EducationCard({edu}) {
         </div>
         <div className="text-end">
           <p>{edu.field}</p>
-          <p>{formatMyDate(edu.startDate)} - {formatMyDate(edu.endDate)}</p>
+          <p>{formatMyDateYear(edu.endDate)}</p>
         </div>
       </div>
 
