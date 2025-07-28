@@ -38,12 +38,27 @@ function WorkExperienceCard({ project, index }) {
       </div>
       {
         project.technologies ?
-        <div className="card-footer text-center">
-          <p>Technologies Used:</p>
+        <div className="card-footer text-center user-select-none">
+          <div className="my-2">
+            <h4 title="Core tools and frameworks I used daily in this role to build, maintain, or ship products.">Primary Technologies:</h4>
+            {
+              project.technologies.map((item, index) => {
+                return <TechnologyItem name={item} key={`technology-${project.name}-${index}`} />
+              })
+            }
+          </div>
           {
-          project.technologies.map((item, index) => {
-            return <TechnologyItem name={item} key={`technology-${project.name}-${index}`} />
-          })
+            project.secondarytechnologies ? 
+            <div className="my-2">
+              <h4 title="Supplementary tools I interacted with occasionally or supported through integration, maintenance, or collaboration.">Secondary Technologies:</h4>
+              {
+                project.secondarytechnologies.map((item, index) => {
+                  return <TechnologyItem name={item} key={`technology-${project.name}-${index}`} />
+                })
+              }
+            </div>
+            : 
+            null
           }
         </div>
         :
