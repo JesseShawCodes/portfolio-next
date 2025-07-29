@@ -1,16 +1,9 @@
 import Image from "next/image";
-import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import ReactMarkdown from 'react-markdown';
 import TechnologyItem from "../components/TechnologyItem";
 import formatMyDate from "../services/services";
 
 function WorkExperienceCard({ project, index }) {
-  const content = [
-    {
-      type: 'list',
-      children: [{ type: 'text', text: project.description }],
-    },
-  ];
-
   return (
     <div className='card my-4' key={`project-${index}`}>
       <div className='card-header bg-card-header text-white'>
@@ -34,7 +27,9 @@ function WorkExperienceCard({ project, index }) {
       </div>
 
       <div className="card-body p-6">
-        <BlocksRenderer content={content} />
+        <ReactMarkdown>
+          {project.description}
+        </ReactMarkdown>
       </div>
       {
         project.technologies ?

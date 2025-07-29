@@ -14,7 +14,6 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@p5-wrapper/next": "^2.0.0",
     "@p5-wrapper/react": "^4.4.2",
-    "@strapi/blocks-react-renderer": "^1.0.2",
     "bootstrap": "^5.3.7",
     "husky": "^9.1.7",
     "next": "15.4.1",
@@ -22,6 +21,7 @@
     "p5": "^2.0.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-markdown": "^10.1.0",
     "react-p5": "^1.4.1",
     "sass": "^1.86.0"
   },
