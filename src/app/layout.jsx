@@ -8,6 +8,9 @@ import BootstrapClient from "./components/BootstrapClient";
 
 export const metadata = {
   title: "Jesse Shaw - Full Stack Developer",
+  icons: {
+    icon: "/icon.png",
+  },
   description: "Full stack developer with expertise in React, Ruby on Rails, and headless CMS technologies. Let's build something great together!",
 };
 
