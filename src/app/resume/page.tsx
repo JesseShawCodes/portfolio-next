@@ -5,32 +5,45 @@ import DownloadButton from '../components/DownloadButton';
 import EducationCard from './EducationCard';
 
 async function ResumePage({ pageHeading = 'Resume' }) {
+  interface Project {
+    name: string,
+    startdate: string,
+    enddate: string
+  }
+
+  interface Education {
+    schoolName: string;
+    degree: string;
+    startDate: string;
+    field: string;
+    endDate: string
+  }
+
   const projects = await getProjects();
   if (projects.length > 0) {
-    projects.sort((a, b) =>  b.startdate.localeCompare(a.startdate));
+    projects.sort((a: Project, b: Project) =>  b.startdate.localeCompare(a.startdate));
   }
 
   const education = await getEducation();
   if (education) {
-    education.sort((a, b) =>  b.startDate.localeCompare(a.startDate));
+    education.sort((a: Education, b: Education) =>  b.startDate.localeCompare(a.startDate));
   }
+
   return (
     <div className="antialiased bg-gradient-my-gradient d-flex flex-column min-vh-100">
-
       <div className='container'>
-        <h1>
-          {pageHeading}
-        </h1>
+        <h1>{pageHeading}</h1>
         <DownloadButton pdfUrl='/JesseShaw_Resume.pdf'/>
         <h2>Work Experience</h2>
         {
-          projects.map((project, index) => (
+          projects.map((project: Project, index: number) => (
             <WorkExperienceCard key={index} project={project} index={index} />
           ))
         }
         <h2>Education</h2>
         {
-          education.map((edu, index) => (
+          // Change 'object' to the correct Education type
+          education.map((edu: Education, index: number) => (
             <EducationCard key={index} edu={edu} index={index} />
           ))
         }

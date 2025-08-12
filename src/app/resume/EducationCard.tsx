@@ -1,6 +1,21 @@
+import React from "react";
 import { formatMyDateYear } from "../services/services";
 
-function EducationCard({edu}) {
+interface Education {
+  schoolName: string;
+  degree: string;
+  startDate: string;
+  field: string;
+  endDate: string
+}
+
+
+interface EducationCardProps {
+  edu: Education;
+  index: number;
+}
+
+function EducationCard({edu, index}: EducationCardProps) {
   return (
     <div className="card my-4">
       <div className="d-flex justify-content-between card-header bg-card-header text-white">

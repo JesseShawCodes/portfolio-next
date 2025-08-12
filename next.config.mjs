@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         protocol: "http",
-        hostname: `${process.env.NEXT_PUBLIC_API_ROOT_MEDIA}`,
+        hostname: `${process.env.NEXT_PUBLIC_LOCALHOST}`,
         port: "1337",
         pathname: "/**",
       },

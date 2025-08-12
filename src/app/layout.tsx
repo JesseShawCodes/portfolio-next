@@ -1,6 +1,7 @@
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import "./App.scss";
 
+import React from 'react';
 import NavBar from "./components/NavBar";
 import { ThemeProvider } from "./context/ThemeContext";
 import Footer from "./components/Footer";

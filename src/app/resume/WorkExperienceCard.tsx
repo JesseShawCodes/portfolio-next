@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import ReactMarkdown from 'react-markdown';
 import TechnologyItem from "../components/TechnologyItem";

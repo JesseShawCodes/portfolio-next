@@ -1,4 +1,4 @@
-export default function formatMyDate(dateString) {
+export default function formatMyDate(dateString: string) {
   const date = new Date(dateString);
 
   const year = date.getFullYear();
@@ -7,7 +7,7 @@ export default function formatMyDate(dateString) {
   return `${year} ${month}`;
 }
 
-export function formatMyDateYear(dateString) {
+export function formatMyDateYear(dateString: string) {
   const date = new Date(dateString);
   const year = date.getFullYear();
   return `${year}`;

@@ -1,6 +1,5 @@
 "use client";
 import React, {useRef, useState, useEffect} from "react";
-import P5Sketch from "./sketch";
 import Repo from "../components/Repo";
 import { Octokit } from "octokit";
 import Link from "next/link";
