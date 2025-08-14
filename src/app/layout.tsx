@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import { ThemeProvider } from "./context/ThemeContext";
 import Footer from "./components/Footer";
 import BootstrapClient from "./components/BootstrapClient";
+import BackToTop from './components/BackToTop';
 
 export const metadata = {
   title: "Jesse Shaw - Full Stack Developer",
@@ -13,6 +14,12 @@ export const metadata = {
     icon: "/favicon.png",
   },
   description: "Full stack developer with expertise in React, Ruby on Rails, and headless CMS technologies. Let's build something great together!",
+  openGraph: {
+    title: "Jesse Shaw - Full Stack Developer",
+    description: "Full stack developer with expertise in React, Ruby on Rails, and headless CMS technologies. Let's build something great together!",
+    url: "https://jesse-shaw.netlify.app",
+    siteName: "Jesse Shaw - Full Stack Developer"
+  }
 };
 
 export default async function RootLayout({ children }) {
@@ -26,6 +33,7 @@ export default async function RootLayout({ children }) {
             {children}
           </main>
           <Footer />
+          <BackToTop/>
         </div>
         </ThemeProvider>
         <BootstrapClient />

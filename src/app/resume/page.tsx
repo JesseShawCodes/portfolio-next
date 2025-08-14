@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import WorkExperienceCard from './WorkExperienceCard';
 import DownloadButton from '../components/DownloadButton';
 import EducationCard from './EducationCard';
-import BackToTop from '../components/BackToTop';
 
 async function ResumePage({ pageHeading = 'Resume' }) {
   interface Project {
@@ -48,7 +47,6 @@ async function ResumePage({ pageHeading = 'Resume' }) {
             <EducationCard key={index} edu={edu} index={index} />
           ))
         }
-        <BackToTop />
       </div>
     </div>
   );
