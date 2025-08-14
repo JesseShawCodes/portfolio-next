@@ -48,7 +48,7 @@ body, .card, .card-header {
 
 /*Back to Top*/
 
-#back_to_top_container {
+#back-to-top-container {
   width: 100px;
   height: 100px;
   z-index: 100;
@@ -56,7 +56,7 @@ body, .card, .card-header {
   bottom: 30px; 
   right: 30px;
   transition: opacity 0.4s ease-in-out;
-  #back_to_top {
+  #back-to-top {
 
       z-index: 99; 
       border: none;
@@ -71,13 +71,6 @@ body, .card, .card-header {
       margin: 20px 20px 4px;
       box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
       width: 55px;
-  }
-
-  .back_to_top_text {
-      color: var(--bs-light);
-      text-align: center;
-      cursor: pointer;
-      border-radius: 12px;
   }
 }
 
