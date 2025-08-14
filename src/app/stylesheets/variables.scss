@@ -10,12 +10,8 @@ $portfolio-green: rgb(50, 90, 90);
     --bs-btn-border-color: #{$portfolio-green};
     --bs-btn-hover-bg: #{$portfolio-green};
     --bs-btn-hover-border-color: #{$portfolio-green};
-    // --bs-btn-focus-shadow-rgb: 49, 132, 253;
-    // --bs-btn-active-color: #fff;
     --bs-btn-active-bg: #{$portfolio-green};
     --bs-btn-active-border-color: #{$portfolio-green};
-    // --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-    // --bs-btn-disabled-color: #fff;
     --bs-btn-disabled-bg: #{$portfolio-green};
     --bs-btn-disabled-border-color: #{$portfolio-green};
   }
@@ -36,12 +32,8 @@ $portfolio-green: rgb(50, 90, 90);
     --bs-btn-border-color: #{lighten($portfolio-green, 15%)};
     --bs-btn-hover-bg: #{lighten($portfolio-green, 15%)};
     --bs-btn-hover-border-color: #{lighten($portfolio-green, 15%)};
-    // --bs-btn-focus-shadow-rgb: 49, 132, 253;
-    // --bs-btn-active-color: #fff;
     --bs-btn-active-bg: #{lighten($portfolio-green, 15%)};
     --bs-btn-active-border-color: #{lighten($portfolio-green, 15%)};
-    // --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-    // --bs-btn-disabled-color: #fff;
     --bs-btn-disabled-bg: #{lighten($portfolio-green, 15%)};
     --bs-btn-disabled-border-color: #{lighten($portfolio-green, 15%)};
   }
