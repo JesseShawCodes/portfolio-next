@@ -18,8 +18,14 @@ export const metadata = {
     title: "Jesse Shaw - Full Stack Developer",
     description: "Full stack developer with expertise in React, Ruby on Rails, and headless CMS technologies. Let's build something great together!",
     url: "https://jesse-shaw.netlify.app",
-    siteName: "Jesse Shaw - Full Stack Developer"
-  }
+    siteName: "Jesse Shaw - Full Stack Developer",
+    images: [
+        {
+            url: '/opengraph-image.png', // Or a full URL for external images
+            alt: 'Jesse Shaw - Full Stack Developer',
+        },
+    ],
+}
 };
 
 export default async function RootLayout({ children }) {
