@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import myPicture from '../media/Jesse.jpg'
 import PropTypes from 'prop-types';
+import CallToActionButton from '../components/CallToActionButton';
 
 function HomePage({
   homeHeading = 'My name is Jesse. I am a Full Stack Developer',
@@ -11,12 +12,16 @@ function HomePage({
   return (
     <div className="min-vh-100 d-flex flex-column justify-content-center bg-gradient-my-gradient">
       <div className="container">
-        <div className='d-flex justify-content-center'>
-        <Image src={myPicture} alt="Dadgad logo" role="presentation" className="me-2" style={{width: '200px', height: 'auto'}}/>
+        <div className='d-flex justify-content-center my-3'>
+          <Image src={myPicture} alt="Dadgad logo" role="presentation" className="me-2" style={{width: '200px', height: 'auto'}}/>
         </div>
         <h1>{homeHeading}</h1>
         <h2>{homeSubHeading}</h2>
         <p className="text-left">{homeContent}</p>
+        <div className='d-flex'>
+          <CallToActionButton url='/portfolio' text='Projects I am working on' customClass='me-3' />          
+          <CallToActionButton url='/resume' text='My Resume' />
+        </div>
       </div>
     </div>
   );

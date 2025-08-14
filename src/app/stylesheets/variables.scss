@@ -1,8 +1,24 @@
 // Default (Light) Theme Colors
 $dark-teal-grey: rgb(25, 45, 45);
+$portfolio-green: rgb(50, 90, 90);
 
 :root,
 [data-bs-theme="light"] {
+  /*Button Primary Styling*/
+  .btn-primary {
+    --bs-btn-bg: #{$portfolio-green};
+    --bs-btn-border-color: #{$portfolio-green};
+    --bs-btn-hover-bg: #{$portfolio-green};
+    --bs-btn-hover-border-color: #{$portfolio-green};
+    // --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    // --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #{$portfolio-green};
+    --bs-btn-active-border-color: #{$portfolio-green};
+    // --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    // --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #{$portfolio-green};
+    --bs-btn-disabled-border-color: #{$portfolio-green};
+  }
   /*Background (bg) colors*/
   --color-dadgad-bg-gradient-start: rgb(245, 255, 245); /* Pale Greenish White */
   --color-dadgad-bg-gradient-end: rgb(230, 245, 230);   /* Very Light Green */
@@ -14,6 +30,21 @@ $dark-teal-grey: rgb(25, 45, 45);
 
 // Dark Theme Colors
 [data-bs-theme="dark"] {
+
+  .btn-primary {
+    --bs-btn-bg: #{lighten($portfolio-green, 15%)};
+    --bs-btn-border-color: #{lighten($portfolio-green, 15%)};
+    --bs-btn-hover-bg: #{lighten($portfolio-green, 15%)};
+    --bs-btn-hover-border-color: #{lighten($portfolio-green, 15%)};
+    // --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    // --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #{lighten($portfolio-green, 15%)};
+    --bs-btn-active-border-color: #{lighten($portfolio-green, 15%)};
+    // --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    // --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #{lighten($portfolio-green, 15%)};
+    --bs-btn-disabled-border-color: #{lighten($portfolio-green, 15%)};
+  }
   /*Background (bg) colors*/
   --color-dadgad-bg-gradient-start: $dark-teal-grey;   /* Dark Teal-Grey */
   --color-dadgad-bg-gradient-end: rgb(40, 70, 70);     /* Slightly Lighter Teal-Grey */
