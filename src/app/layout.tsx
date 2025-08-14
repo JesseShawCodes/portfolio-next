@@ -10,6 +10,7 @@ import BackToTop from './components/BackToTop';
 
 export const metadata = {
   title: "Jesse Shaw - Full Stack Developer",
+  metadataBase: new URL('https://jesse-shaw.netlify.app'),
   icons: {
     icon: "/favicon.png",
   },
