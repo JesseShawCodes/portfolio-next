@@ -28,7 +28,7 @@ $portfolio-green: rgb(50, 90, 90);
 [data-bs-theme="dark"] {
 
   .btn-primary {
-    --bs-btn-bg: #{lighten($portfolio-green, 15%)};
+    --bs-btn-bg: #{lighten($portfolio-green, 10%)};
     --bs-btn-border-color: #{lighten($portfolio-green, 15%)};
     --bs-btn-hover-bg: #{lighten($portfolio-green, 15%)};
     --bs-btn-hover-border-color: #{lighten($portfolio-green, 15%)};
