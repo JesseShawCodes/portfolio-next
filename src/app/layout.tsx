@@ -7,6 +7,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import Footer from "./components/Footer";
 import BootstrapClient from "./components/BootstrapClient";
 import BackToTop from './components/BackToTop';
+import Script from 'next/script';
 
 export const metadata = {
   title: "Jesse Shaw | Full Stack Developer",
@@ -30,9 +31,24 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
+  // let dataLayer = window.dataLayer || [];
+  const GA_MEASUREMENT_ID = 'G-XM96SQ4MGL';
   return (
     <html lang="en">
       <body>
+          <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} strategy='afterInteractive'/>
+          <Script id="ga-init" strategy='afterInteractive'>
+            {
+              `
+                window.dataLayer = window.dataLayer || [];
+                function gtag() {dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_MEASUREMENT_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `
+            }
+          </Script>
         <ThemeProvider>
         <div className="d-flex flex-column min-vh-100">
           <NavBar />
