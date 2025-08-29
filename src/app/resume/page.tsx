@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import WorkExperienceCard from './WorkExperienceCard';
 import DownloadButton from '../components/DownloadButton';
 import EducationCard from './EducationCard';
+import { getRenderResumeDataCache } from 'next/dist/server/app-render/work-unit-async-storage.external';
 
 async function ResumePage({ pageHeading = 'Resume' }) {
   interface Project {
@@ -33,7 +34,7 @@ async function ResumePage({ pageHeading = 'Resume' }) {
     <div className="antialiased bg-gradient-my-gradient d-flex flex-column min-vh-100">
       <div className='container'>
         <h1>{pageHeading}</h1>
-        <DownloadButton pdfUrl='/JesseShaw_Resume.pdf'/>
+        <DownloadButton pdfUrl={`https://${process.env.NEXT_PUBLIC_API_ROOT_MEDIA}/${process.env.NEXT_PUBLIC_RESUME_DOWNLOAD}`}/>
         <h2>Work Experience</h2>
         {
           projects.map((project: Project, index: number) => (
