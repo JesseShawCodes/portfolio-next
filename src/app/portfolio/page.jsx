@@ -1,12 +1,11 @@
 "use client";
-import React, {useRef, useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import Repo from "../components/Repo";
 import { Octokit } from "octokit";
 import Link from "next/link";
 import Project from "./projects";
 
 export default function Page() {
-  const p5Ref = useRef(null);
   const [repositories, setRepositories] = useState([]);
   const [projects, setProjects] = useState([]);
 
