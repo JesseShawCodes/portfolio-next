@@ -14,6 +14,7 @@ export default function Page() {
 
   const octokit = new Octokit();
 
+  // Git Hub API.
   useEffect(() => {
     (async () => {
       try {
@@ -22,7 +23,7 @@ export default function Page() {
           username: 'JesseShawCodes',
           sort: 'updated',
           direction: 'desc',
-          per_page: 20,
+          per_page: 10,
           headers: {
             'X-GitHub-Api-Version': '2022-11-28',
           },
