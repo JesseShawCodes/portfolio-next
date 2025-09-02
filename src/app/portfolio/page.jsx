@@ -65,15 +65,8 @@ export default function Page() {
     return <div className="container">Loading...</div>;
   }
 
-  const handleSketchReady = (p5Instance) => {
-    p5Ref.current = p5Instance;
-  }
   return (
     <div className="container">
-    {/*
-      p5 Sketch to be added later
-    <P5Sketch />
-    */}
       <h1>Projects</h1>
       <div>
         <p>My time is currently being taken up by my Full Time job at Amentum. But I do wanna make sure I am putting in extra time to keep up with new tools and work on some of my own projects to stay sharp.</p>
