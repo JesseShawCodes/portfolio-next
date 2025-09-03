@@ -1,5 +1,5 @@
 "use client";
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, use} from "react";
 import Repo from "../components/Repo";
 import { Octokit } from "octokit";
 import Link from "next/link";
@@ -9,8 +9,11 @@ export default function Page() {
   const [repositories, setRepositories] = useState([]);
   const [projects, setProjects] = useState([]);
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [isLoadingGithub, setIsLoadingGithub] = useState(false);
+  const [isErrorGithub, setIsErrorGithub] = useState(false);
+
+  const [isLoadingCms, setIsLoadingCms] = useState(false);
+  const [isErrorCms, setIsErrorCms] = useState(false);
 
   const octokit = new Octokit();
 
@@ -18,7 +21,7 @@ export default function Page() {
   useEffect(() => {
     (async () => {
       try {
-        setIsLoading(true);
+        setIsLoadingGithub(true);
         const { data } = await octokit.request('GET /users/JesseShawCodes/repos', {
           username: 'JesseShawCodes',
           sort: 'updated',
@@ -30,20 +33,21 @@ export default function Page() {
         });
         setRepositories(data);
       } catch (error) {
-        setIsError({
+        setIsErrorGithub({
           error: true,
           message: error,
         });
       } finally {
-        setIsLoading(false);
+        setIsLoadingGithub(false);
       }
     })();
   }, []);
 
+  // Portfolio CMS API.
   useEffect(() => {
     (async () => {
       try {
-        setIsLoading(true);
+        setIsLoadingCms(true);
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate=logo`, {
           cache: 'force-cache',
         });
@@ -51,17 +55,21 @@ export default function Page() {
         const data = await res.json();
         setProjects(data.data);
       } catch (error) {
-        setIsError({
+        setIsErrorCms({
           error: true,
           message: error,
         });
       } finally {
-        setIsLoading(false);
+        setIsLoadingCms(false);
       }
     })();
   }, []);
 
-  if (isLoading) {
+  useEffect(() => {
+    console.log("GIT COMMITS");
+  }, [repositories]);
+
+  if (isLoadingGithub || isLoadingCms) {
     return <div className="container">Loading...</div>;
   }
 
@@ -73,11 +81,11 @@ export default function Page() {
 
           <div>
             {
-              isError
+              isErrorCms
                 ? (
                   <div>
                     <p>
-                      {isError.message.message}
+                      {isErrorCms.message.message}
                     </p>
                   </div>
                 )
@@ -95,11 +103,11 @@ export default function Page() {
         <div style={{ maxWidth: '1200px', margin: '0px auto' }}>
           <div>
             {
-              isError
+              isErrorGithub
                 ? (
                   <div>
                     <p>
-                      {isError.message.message}
+                      {isErrorGithub.message.message}
                     </p>
                   </div>
                 )

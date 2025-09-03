@@ -14,6 +14,12 @@ const nextConfig = {
         port: "1337",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: `${process.env.NEXT_PUBLIC_LOCALHOST}`,
+        port: "1337",
+        pathname: "/**",
+      },
     ],
   },
 };
