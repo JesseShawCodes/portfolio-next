@@ -2,21 +2,27 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { fetchGitHubData } from '../services/fetchGitHubData';
+import { formatMyDateDetail } from '../services/services';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faGithub,
+  faInstagram, faLinkedin, faXTwitter,
+} from '@fortawesome/free-brands-svg-icons';
 
 export default function Repo(repository) {
   const { repo } = repository;
   const [commits, setCommits] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   // Git Hub API.
   useEffect(() => {
     (async () => {
       try {
-        setIsLoading(true);
-
-        const data = await fetchGitHubData(`https://api.github.com/repos/JesseShawCodes/${repo.name}/commits?per_page=3&sort=updated`);
         
+
+        const data = await fetchGitHubData(`https://api.github.com/repos/JesseShawCodes/${repo.name}/commits?per_page=3`);
         setCommits(data);
       } catch (error) {
         setIsError({
@@ -27,18 +33,15 @@ export default function Repo(repository) {
         setIsLoading(false);
       }
     })();
-  }, []);
+  }, [repo]);
 
   return (
-    <section className="card my-4 mx-3 p-3 card-top-border shadow-lg" key={repo.id}>
+    <section className="card my-4 mx-3 p-3 card-top-border shadow-lg shadow-dark-mode-white" key={repo.id}>
       <h3>{repo.name}</h3>
-      <div className='my-2'>
-        <Link target="_blank" href={repo.html_url}>Repo</Link>
-      </div>
-      <p>
-        <span className='fw-bold'>Updated At: </span>
-        {repo.updated_at}
-      </p>
+      <h4 className='my-2'>
+        <Link target="_blank" href={repo.html_url} className='link-underline link-underline-opacity-0'><FontAwesomeIcon icon={faGithub} />Repo</Link>
+      </h4>
+
       {
         repo.language
           ? (
@@ -65,7 +68,7 @@ export default function Repo(repository) {
               <p>Technologies Used:</p>
               <ul>
                 {
-                  repo.topics.map((topic) => <li key={crypto.randomUUID()}>{topic}</li>)
+                  repo.topics.map((topic) => <li key={topic}>{topic}</li>)
                 }
               </ul>
             </div>
@@ -77,10 +80,13 @@ export default function Repo(repository) {
         {isError && <p>Error loading commits.</p>}
         <ul className='p-0'>
           {commits.map((commit) => (
-            <li key={commit.sha} className='list-unstyled d-flex flex-column'>
-              <Link href={commit.html_url} target="_blank" className="text-blue-500 hover:underline">
-                {commit.sha.slice(0, 6)}
-              </Link>
+            <li key={commit.sha} className='list-unstyled d-flex flex-column card border-0 my-2 pb-2'>
+              <h5 className='d-flex flex-row justify-content-between'>
+                <Link href={commit.html_url} target="_blank" className="text-blue-500 hover:underline link-underline link-underline-opacity-0">
+                  <FontAwesomeIcon icon={faGithub} />{commit.sha.slice(0, 6)}
+                </Link>
+                {formatMyDateDetail(commit.commit.author.date)}
+              </h5>
               <div>{commit.commit.message}</div>
             </li>
           ))}

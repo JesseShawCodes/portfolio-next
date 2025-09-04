@@ -23,9 +23,11 @@ $portfolio-green: rgb(50, 90, 90);
   --color-card-header-bg: rgb(50, 90, 90, 0.9); /* A muted, dark teal-green */
   --color-card-header-text: white; /* White text for contrast */
 
-  .card-top-border {
-    border-top: 8px solid $dark-teal-grey !important; /* Adjust thickness (8px) as needed */
-    border-radius: 0.375rem; /* Match Bootstrap's default border-radius */
+  .card {  
+    .card-top-border {
+      border-top: 8px solid $dark-teal-grey !important;
+      border-radius: 0.375rem;
+    }
   }
 }
 
@@ -50,8 +52,14 @@ $portfolio-green: rgb(50, 90, 90);
   --color-card-header-bg: rgb(80, 130, 130, 0.2); /* A medium, slightly desaturated teal */
   --color-card-header-text: white; /* White text for contrast */
 
-  .card-top-border {
-    border-top: 8px solid $portfolio-green !important; /* Adjust thickness (8px) as needed */
-    border-radius: 0.375rem; /* Match Bootstrap's default border-radius */
+  .card {
+    &.card-top-border {
+      border-top: 8px solid $portfolio-green !important;
+      border-radius: 0.375rem; 
+    }
+
+    &.shadow-dark-mode-white {
+      box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.33) !important;
+    }
   }
 }

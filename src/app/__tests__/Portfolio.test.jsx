@@ -8,6 +8,7 @@ jest.mock('react-markdown', () => (props) => {
   return <>{props.children}</>;
 });
 
+// Projects Section Mock Data
 global.fetch = jest.fn(() =>
   Promise.resolve({
     json: () =>
@@ -49,6 +50,7 @@ global.fetch = jest.fn(() =>
   })
 );
 
+// Github Repo mockdata
 jest.mock('../services/fetchGitHubData', () => ({
   fetchGitHubData: jest.fn(() =>
     Promise.resolve(

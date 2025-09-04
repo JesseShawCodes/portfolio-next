@@ -12,3 +12,8 @@ export function formatMyDateYear(dateString: string) {
   const year = date.getFullYear();
   return `${year}`;
 }
+
+export function formatMyDateDetail(dateString: string) {
+  const date = new Date(dateString);
+  return `${date.toLocaleDateString('en-US', { month: 'long', year: "numeric", day: "numeric"})}`;
+}
