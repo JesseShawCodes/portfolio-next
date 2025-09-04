@@ -19,7 +19,6 @@ export default function Repo(repository) {
         
         setCommits(data);
       } catch (error) {
-        console.log(error);
         setIsError({
           error: true,
           message: error,
