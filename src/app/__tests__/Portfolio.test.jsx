@@ -2,6 +2,7 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import Page from '../portfolio/page';
+import { fetchGitHubData } from '../services/fetchGitHubData';
 
 jest.mock('react-markdown', () => (props) => {
   return <>{props.children}</>;
@@ -48,11 +49,10 @@ global.fetch = jest.fn(() =>
   })
 );
 
-jest.mock('octokit', () => ({
-  Octokit: jest.fn(() => ({
-    request: jest.fn(() =>
-      Promise.resolve({
-        data: [
+jest.mock('../services/fetchGitHubData', () => ({
+  fetchGitHubData: jest.fn(() =>
+    Promise.resolve(
+        [
           {
             name: 'Test Repo 1',
             description: 'Test description 1',
@@ -66,9 +66,8 @@ jest.mock('octokit', () => ({
             topics: [],
           },
         ],
-      })
-    ),
-  })),
+    )
+  ),
 }));
 
 describe('Portfolio Page', () => {

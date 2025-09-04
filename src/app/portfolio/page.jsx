@@ -1,9 +1,10 @@
 "use client";
 import React, {useState, useEffect, use} from "react";
 import Repo from "../components/Repo";
-import { Octokit } from "octokit";
+
 import Link from "next/link";
 import Project from "./projects";
+import { fetchGitHubData } from "../services/fetchGitHubData";
 
 export default function Page() {
   const [repositories, setRepositories] = useState([]);
@@ -15,22 +16,12 @@ export default function Page() {
   const [isLoadingCms, setIsLoadingCms] = useState(false);
   const [isErrorCms, setIsErrorCms] = useState(false);
 
-  const octokit = new Octokit();
-
   // Git Hub API.
   useEffect(() => {
     (async () => {
       try {
         setIsLoadingGithub(true);
-        const { data } = await octokit.request('GET /users/JesseShawCodes/repos', {
-          username: 'JesseShawCodes',
-          sort: 'updated',
-          direction: 'desc',
-          per_page: 10,
-          headers: {
-            'X-GitHub-Api-Version': '2022-11-28',
-          },
-        });
+        const data = await fetchGitHubData("https://api.github.com/users/JesseShawCodes/repos?per_page=10&sort=updated");
         setRepositories(data);
       } catch (error) {
         setIsErrorGithub({
@@ -64,10 +55,6 @@ export default function Page() {
       }
     })();
   }, []);
-
-  useEffect(() => {
-    console.log("GIT COMMITS");
-  }, [repositories]);
 
   if (isLoadingGithub || isLoadingCms) {
     return <div className="container">Loading...</div>;
