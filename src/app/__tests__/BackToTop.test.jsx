@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import BackToTop from '../components/BackToTop';
+import BackToTop from '../components/FloatingControls/BackToTop';
 
 const mockedScrollTo = jest.fn();
 Object.defineProperty(window, 'scrollY', { value: 0, writable: true });

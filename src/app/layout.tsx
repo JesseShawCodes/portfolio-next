@@ -6,7 +6,8 @@ import NavBar from "./components/NavBar";
 import { ThemeProvider } from "./context/ThemeContext";
 import Footer from "./components/Footer";
 import BootstrapClient from "./components/BootstrapClient";
-import BackToTop from './components/BackToTop';
+
+import FloatingControls from "./components/FloatingControls/FloatingControls";
 import Script from 'next/script';
 
 export const metadata = {
@@ -55,8 +56,8 @@ export default async function RootLayout({ children }) {
           <main className="flex-grow-1">
             {children}
           </main>
+          <FloatingControls />
           <Footer />
-          <BackToTop/>
         </div>
         </ThemeProvider>
         <BootstrapClient />

@@ -36,8 +36,5 @@ describe('NavBar', () => {
     // Check for navigation links
     expect(screen.getByText('Resume')).toBeInTheDocument();
     expect(screen.getByText('Projects')).toBeInTheDocument();
-
-    // Check for the mocked ThemeToggleButton
-    expect(screen.getByTestId('theme-toggle-button-mock')).toBeInTheDocument();
   });
 });
