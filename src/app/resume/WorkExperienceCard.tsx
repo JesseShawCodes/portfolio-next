@@ -6,7 +6,7 @@ import formatMyDate from "../services/services";
 
 function WorkExperienceCard({ project, index }) {
   return (
-    <div className='card my-4' key={`project-${index}`}>
+    <div className='card my-4 shadow-lg shadow-dark-mode-white' key={`project-${index}`}>
       <div className='card-header bg-card-header text-white'>
         <h2>{project.title}</h2>
         <h3>{project.company}</h3>

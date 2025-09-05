@@ -7,7 +7,7 @@ import TechnologyItem from "../components/TechnologyItem";
 
 function Project({project}) {
   return (
-    <div className="project card my-4">
+    <div className="project card my-4 card-top-border shadow-lg shadow-dark-mode-white">
       <div className="card-header">
         <h2>{project.name}</h2>
         <div><Image src={`${project.logo.url}`} width={80} height={80} alt={`${project.name} logo`} /></div>

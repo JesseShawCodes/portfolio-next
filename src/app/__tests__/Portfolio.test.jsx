@@ -2,7 +2,6 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import Page from '../portfolio/page';
-import { fetchGitHubData } from '../services/fetchGitHubData';
 
 jest.mock('react-markdown', () => (props) => {
   return <>{props.children}</>;
