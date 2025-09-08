@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import WorkExperienceCard from './WorkExperienceCard';
 import DownloadButton from '../components/DownloadButton';
 import EducationCard from './EducationCard';
-import { getRenderResumeDataCache } from 'next/dist/server/app-render/work-unit-async-storage.external';
 
 async function ResumePage({ pageHeading = 'Resume' }) {
   interface Project {

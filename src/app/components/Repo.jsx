@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { fetchGitHubData } from '../services/fetchGitHubData';
 import { formatMyDateDetail } from '../services/services';
+import TechnologyItem from './TechnologyItem';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -64,13 +65,13 @@ export default function Repo(repository) {
       {
         repo.topics.length
           ? (
-            <div>
+            <div className='mb-4'>
               <p>Technologies Used:</p>
-              <ul>
+              <div>
                 {
-                  repo.topics.map((topic) => <li key={topic}>{topic}</li>)
+                  repo.topics.map((topic) => <TechnologyItem key={topic} name={topic} />)
                 }
-              </ul>
+              </div>
             </div>
           ) : null
       }
