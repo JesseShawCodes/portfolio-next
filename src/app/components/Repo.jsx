@@ -38,7 +38,7 @@ export default function Repo(repository) {
 
   return (
     <section className="card my-4 mx-3 p-3 card-top-border shadow-lg shadow-dark-mode-white" key={repo.id}>
-      <h3>{repo.name}</h3>
+      <h3>{repo.cmsName}</h3>
       <h4 className='my-2'>
         <Link target="_blank" href={repo.html_url} className='link-underline link-underline-opacity-0'><FontAwesomeIcon icon={faGithub} />Repo</Link>
       </h4>

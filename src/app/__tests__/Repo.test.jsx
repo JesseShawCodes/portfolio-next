@@ -8,6 +8,7 @@ jest.mock('../services/fetchGitHubData');
 const mockRepo = {
   id: 1,
   name: 'test-repo',
+  cmsName: 'test-repo',
   html_url: 'https://github.com/test/test-repo',
   language: 'JavaScript',
   description: 'A test repository',

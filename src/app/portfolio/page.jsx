@@ -5,6 +5,7 @@ import Repo from "../components/Repo";
 import Link from "next/link";
 import Project from "./projects";
 import { fetchGitHubData } from "../services/fetchGitHubData";
+import { fetchCmsData } from "../services/fetchCmsData";
 
 export default function Page() {
   const [repositories, setRepositories] = useState([]);
@@ -21,8 +22,14 @@ export default function Page() {
     (async () => {
       try {
         setIsLoadingGithub(true);
-        const data = await fetchGitHubData("https://api.github.com/users/JesseShawCodes/repos?per_page=10&sort=updated");
-        setRepositories(data);
+        const githubFetch = await fetchGitHubData("https://api.github.com/users/JesseShawCodes/repos?per_page=100&sort=updated");
+        const selectedRepos = await fetchCmsData(`${process.env.NEXT_PUBLIC_API_URL}/api/repos?populate=*`);
+        const githubRepos = githubFetch.map((repo) => {
+          const keyExists = selectedRepos.data.some((selectedRepo) => selectedRepo.url === repo.html_url);
+          const newName = selectedRepos.data.find((selectedRepo) => repo.html_url === selectedRepo.url);
+          return { ...repo, isSelected: keyExists, cmsName: newName ? newName.name : null};
+        }).filter(obj => obj.isSelected);
+        setRepositories(githubRepos);
       } catch (error) {
         setIsErrorGithub({
           error: true,
