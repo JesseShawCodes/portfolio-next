@@ -35,6 +35,7 @@ export default function Page() {
             return {
               ...repo,
               isSelected: !!selectedRepo,
+              isPinned: selectedRepo ? selectedRepo.pinned : null,
               cmsName: selectedRepo ? selectedRepo.name : null,
             };
           })
