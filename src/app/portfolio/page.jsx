@@ -17,50 +17,56 @@ export default function Page() {
   const [isLoadingCms, setIsLoadingCms] = useState(false);
   const [isErrorCms, setIsErrorCms] = useState(false);
 
-  // Git Hub API.
   useEffect(() => {
-    (async () => {
+    const fetchData = async () => {
       try {
         setIsLoadingGithub(true);
-        const githubFetch = await fetchGitHubData("https://api.github.com/users/JesseShawCodes/repos?per_page=100&sort=updated");
-        const selectedRepos = await fetchCmsData(`${process.env.NEXT_PUBLIC_API_URL}/api/repos?populate=*`);
-        const githubRepos = githubFetch.map((repo) => {
-          const keyExists = selectedRepos.data.some((selectedRepo) => selectedRepo.url === repo.html_url);
-          const newName = selectedRepos.data.find((selectedRepo) => repo.html_url === selectedRepo.url);
-          return { ...repo, isSelected: keyExists, cmsName: newName ? newName.name : null};
-        }).filter(obj => obj.isSelected);
+        setIsLoadingCms(true);
+
+        const [githubFetch, selectedRepos, projectsResponse] = await Promise.all([
+          fetchGitHubData("https://api.github.com/users/JesseShawCodes/repos?per_page=100&sort=updated"),
+          fetchCmsData(`${process.env.NEXT_PUBLIC_API_URL}/api/repos?populate=*`),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate=logo`, { cache: 'force-cache' })
+        ]);
+
+        const githubRepos = githubFetch
+          .map((repo) => {
+            const selectedRepo = selectedRepos.data.find((selectedRepo) => selectedRepo.url === repo.html_url);
+            return {
+              ...repo,
+              isSelected: !!selectedRepo,
+              cmsName: selectedRepo ? selectedRepo.name : null,
+            };
+          })
+          .filter((obj) => obj.isSelected)
+          .sort((a, b) => {
+            const aPinned = selectedRepos.data.find((d) => d.name === a.cmsName)?.pinned || false;
+            const bPinned = selectedRepos.data.find((d) => d.name === b.cmsName)?.pinned || false;
+
+            if (aPinned && !bPinned) return -1;
+            if (!aPinned && bPinned) return 1;
+          });
+
         setRepositories(githubRepos);
+
+        const projectsData = await projectsResponse.json();
+        setProjects(projectsData.data);
       } catch (error) {
         setIsErrorGithub({
           error: true,
           message: error,
         });
-      } finally {
-        setIsLoadingGithub(false);
-      }
-    })();
-  }, []);
-
-  // Portfolio CMS API.
-  useEffect(() => {
-    (async () => {
-      try {
-        setIsLoadingCms(true);
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate=logo`, {
-          cache: 'force-cache',
-        });
-
-        const data = await res.json();
-        setProjects(data.data);
-      } catch (error) {
         setIsErrorCms({
           error: true,
           message: error,
         });
       } finally {
+        setIsLoadingGithub(false);
         setIsLoadingCms(false);
       }
-    })();
+    };
+
+    fetchData();
   }, []);
 
   if (isLoadingGithub || isLoadingCms) {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import Page from '../portfolio/page';
-import { prettyDOM } from '@testing-library/react';
 
 // Refactor mock data into separate variables for clarity
 const mockCmsData = {
