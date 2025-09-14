@@ -1,5 +1,6 @@
 @use 'stylesheets/custom.scss';
 @use 'stylesheets/variables.scss';
+@use 'stylesheets/terminal_mock';
 
 body, .card, .card-header {
   transition: background-color 0.5s ease, color 0.5s ease, background-image 0.5s ease;

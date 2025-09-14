@@ -1,0 +1,26 @@
+@import "variables.scss";
+
+.terminal-mock {
+  color:  #{lighten($portfolio-green, 40%)};
+  font-family: monospace;
+  padding: 1rem;
+  border-radius: 8px;
+  border-radius: 8px;
+  overflow-Y: auto;
+
+  .line-command {
+    color: $portfolio-green;
+  }
+
+  .blinking-cursor {
+    display: inline-block;
+    width: 10px;
+    animation: blink 1s steps(2, start) infinite;
+  }
+
+  @keyframes blink {
+    to {
+      visibility: hidden;
+    }
+  }
+}

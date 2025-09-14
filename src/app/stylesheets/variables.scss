@@ -5,6 +5,11 @@ $portfolio-green: rgb(50, 90, 90);
 :root,
 [data-bs-theme="light"] {
   /*Button Primary Styling*/
+  
+  .terminal-mock {
+    background-color: rgb(25, 45, 45, 0.2);
+    color: $dark-teal-grey;
+  }
   .btn-primary {
     --bs-btn-bg: #{$portfolio-green};
     --bs-btn-border-color: #{$portfolio-green};
@@ -33,6 +38,9 @@ $portfolio-green: rgb(50, 90, 90);
 
 // Dark Theme Colors
 [data-bs-theme="dark"] {
+  .terminal-mock {
+    color: lighten($dark-teal-grey, 40%);
+  }
 
   .btn-primary {
     --bs-btn-bg: #{lighten($portfolio-green, 10%)};
