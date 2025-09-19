@@ -104,4 +104,16 @@ describe('Portfolio Page', () => {
       expect(repoHeading).toBeInTheDocument();
     });
   });
+
+  it('should display an error message if fetching from GitHub fails', async () => {
+    const { fetchGitHubData } = require('../services/fetchGitHubData');
+    fetchGitHubData.mockImplementationOnce(() => Promise.reject(new Error('Failed to fetch data')));
+
+    render(<Page />);
+
+    await waitFor(() => {
+      const errorMessages = screen.getAllByText('Failed to fetch data');
+      expect(errorMessages).toHaveLength(2);
+    });
+  });
 });

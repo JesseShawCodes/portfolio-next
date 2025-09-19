@@ -39,6 +39,7 @@ $portfolio-green: rgb(50, 90, 90);
 // Dark Theme Colors
 [data-bs-theme="dark"] {
   .terminal-mock {
+    background-color: rgb(25, 45, 45);
     color: lighten($dark-teal-grey, 40%);
   }
 

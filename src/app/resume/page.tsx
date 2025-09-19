@@ -30,7 +30,7 @@ async function ResumePage({ pageHeading = 'Resume' }) {
   }
 
   return (
-    <div className="antialiased bg-gradient-my-gradient d-flex flex-column min-vh-100">
+    <div className="antialiased d-flex flex-column min-vh-100">
       <div className='container'>
         <h1>{pageHeading}</h1>
         <DownloadButton pdfUrl={`https://${process.env.NEXT_PUBLIC_API_ROOT_MEDIA}/${process.env.NEXT_PUBLIC_RESUME_DOWNLOAD}`}/>

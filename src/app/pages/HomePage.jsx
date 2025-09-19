@@ -10,10 +10,10 @@ function HomePage({
   homeContent = "I am a Full Stack Developer currently working on a Learning Management System application at Amentum. I love coding not just for the challenge, but because it is a form of creation - taking ideas from sketch to screen. Whether it's crafting clean APIs or intuitive front ends, I enjoy the whole stack. I am passionate about collaborating with developers, designers, and big thinkers who care about quality and aren't afraid to experiment. If you are someone who builds with curiosity and purpose, we will probably get along just great.",
 }) {
   return (
-    <div className="min-vh-100 d-flex flex-column justify-content-center bg-gradient-my-gradient">
+    <div className="min-vh-100 d-flex flex-column justify-content-center">
       <div className="container">
         <div className='d-flex justify-content-center my-3'>
-          <Image src={myPicture} alt="Dadgad logo" role="presentation" className="me-2" style={{width: '200px', height: 'auto'}}/>
+          <Image src={myPicture} alt="Jesse Shaw picture" role="presentation" className="me-2" style={{width: '200px', height: 'auto'}}/>
         </div>
         <h1>{homeHeading}</h1>
         <h2>{homeSubHeading}</h2>

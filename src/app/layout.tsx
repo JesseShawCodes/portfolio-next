@@ -53,7 +53,7 @@ export default async function RootLayout({ children }) {
         <ThemeProvider>
         <div className="d-flex flex-column min-vh-100">
           <NavBar />
-          <main className="flex-grow-1">
+          <main className="flex-grow-1  bg-gradient-my-gradient">
             {children}
           </main>
           <FloatingControls />

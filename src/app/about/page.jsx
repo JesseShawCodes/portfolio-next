@@ -1,5 +1,5 @@
 "use client";
-import Terminal from "../components/MockLinux";
+import Terminal from "./MockLinux";
 
 export default function About() {
   return (

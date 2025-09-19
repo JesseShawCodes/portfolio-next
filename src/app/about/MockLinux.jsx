@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
+import TerminalLine from "./TerminalLine";
+import TerminalOutput from "./TerminalOutput";
+import BlinkingCursor from "./BlinkingCursor";
+import BlinkingCursorFinal from "./BlinkingCursorFinal";
 
-const fakeLines = [
-  { command: "whoami", output: "My name is Jesse. I am a Full Stack Developer 🧑‍💻" },
+const aboutMeLines = [
+  { command: "whoami", output: "My name is Jesse. I am a Full Stack Developer 🧑‍💻"},
   { command: "cat ~/bio.txt", output: "I am a developer who loves building things that live on the internet. My goal is to always build products that provide real value to users." },
-  { command: "cat ~/life/roles.txt", output: "Husband, Father, Developer, Musician, Teacher" },
-  {command: "$echo $KID_COUNT", output: "1 (Best project ever)"},
-  { command: "cat ~/skills.txt", output: "JavaScript, React, Node.js, Express, MongoDB, SQL, HTML, CSS, Python, Django, RESTful APIs, Git, Docker" },
-  { command: "cat ~/passport/stamps.txt", output: "Spain , Portugal, France, England, Canada" },
-  {
-    command: "echo $PLACES_I_WANT_TO_TRAVEL",
-    output: "Japan, Brazil, Iceland, Africa, Hong Kong",
-  },
+  { command: "cat ~/life/roles.txt", output: "Husband, Father, Developer, Musician" },
   {
     command: "echo $marriage_years",
     output: "3 years and counting!",
+    picture: "/images/IMG_0105.jpg"
+  },
+  { command: "$echo $KID_COUNT", output: "1 (Best project ever)"},
+  { command: "cat ~/skills.txt", output: "JavaScript, React, Node.js, Express, MongoDB, SQL, HTML, CSS, Python, Django, RESTful APIs, Git, Docker" },
+  { command: "cat ~/passport/stamps.txt", output: "Spain, Portugal, France, England, Canada" },
+  {
+    command: "echo $PLACES_I_WANT_TO_TRAVEL",
+    output: "Japan, Brazil, Iceland, Africa, Hong Kong",
   },
   { command: "How I approach code", output: "From logic to layout, my goal is to build experiences in my work that feel good to use and are fun to share." },
   { command: "About Me", output: "I am a Full Stack Developer currently working on a Learning Management System application at Amentum. I love coding not just for the challenge, but because it is a form of creation - taking ideas from sketch to screen. Whether it's crafting clean APIs or intuitive front ends, I enjoy the whole stack. I am passionate about collaborating with developers, designers, and big thinkers who care about quality and aren't afraid to experiment. If you are someone who builds with curiosity and purpose, we will probably get along just great." },
@@ -26,33 +30,45 @@ const fakeLines = [
   { command: "cat Resume.md", link: "/resume" },
 ];
 
-const Terminal = () => {
+// Disable animations for testing purposes. Always false in production
+const Terminal = ({ disableAnimations = false }) => {
   const [displayedLines, setDisplayedLines] = useState([]);
   const [currentLine, setCurrentLine] = useState("");
   const [lineIndex, setLineIndex] = useState(0);
+  // 
   const [charIndex, setCharIndex] = useState(0);
   const [outputCharIndex, setOutputCharIndex] = useState(0);
   const [isCommandDone, setIsCommandDone] = useState(false);
 
   useEffect(() => {
-    if (lineIndex >= fakeLines.length) return;
+    if (lineIndex >= aboutMeLines.length) return;
 
-    const { command, output, link } = fakeLines[lineIndex];
+    const { command, output, link, picture } = aboutMeLines[lineIndex];
+
+    if (disableAnimations) {
+      setDisplayedLines(aboutMeLines);
+      setLineIndex(aboutMeLines.length);
+      return;
+    }
 
     if (!isCommandDone) {
       // Typing command
       if (charIndex < command.length) {
         const timeout = setTimeout(() => {
-          setCurrentLine((prev) => prev + command[charIndex]);
+          setCurrentLine((prev) => {
+            return prev + command[charIndex];
+          });
+          setDisplayedLines((prev) => {
+            return [...prev.slice(0, lineIndex), { command: currentLine + command[charIndex], output: "", link, picture }]
+          });
           setCharIndex(charIndex + 1);
-        }, 80);
+        }, 100);
         return () => clearTimeout(timeout);
       } else {
         // Command done
         const timeout = setTimeout(() => {
-          setDisplayedLines((prev) => [...prev, { command, output: "", link }]);
           setIsCommandDone(true);
-        }, 500);
+        }, 100);
         return () => clearTimeout(timeout);
       }
     } else {
@@ -65,6 +81,7 @@ const Terminal = () => {
               newLines[lineIndex] = {
                 ...newLines[lineIndex],
                 output: newLines[lineIndex].output + output[outputCharIndex],
+                finalOutput: output,
               };
             }
             return newLines;
@@ -74,14 +91,18 @@ const Terminal = () => {
         return () => clearTimeout(timeout);
       } else {
         // Output done, move to next line
-        setCurrentLine("");
-        setCharIndex(0);
-        setOutputCharIndex(0);
-        setIsCommandDone(false);
-        setLineIndex(lineIndex + 1);
+        lineDone()
       }
     }
-  }, [lineIndex, charIndex, outputCharIndex, isCommandDone]);
+  }, [lineIndex, charIndex, outputCharIndex, isCommandDone, disableAnimations]);
+
+  function lineDone() {
+    setCurrentLine("");
+    setCharIndex(0);
+    setOutputCharIndex(0);
+    setIsCommandDone(false);
+    setLineIndex(lineIndex + 1);
+  }
 
   return (
     <div
@@ -90,27 +111,16 @@ const Terminal = () => {
       {/* Completed Command Lines*/}
       {displayedLines.map((line, i) => (
         <div key={i}>
-          <div>
-            <span className="line-command">$ </span>
-            <span>{line.command}</span>
-          </div>
-          {line.output ? <pre style={{ margin: 0, whiteSpace: "pre-wrap" }}>{line.output}</pre> : null}
-          {line.link ? <Link href={line.link}>Click Here</Link> : null}
+          <TerminalLine line={line}/>
+          <TerminalOutput output={line} />
         </div>
       ))}
 
-      {lineIndex < fakeLines.length && !isCommandDone && (
-        <div>
-          <span>$</span>
-          <span className="ms-2">{currentLine}</span>
-          <span className="blinking-cursor">|</span>
-        </div>
+      {lineIndex < aboutMeLines.length && isCommandDone && (
+        <BlinkingCursor />
       )}
       {
-        lineIndex >= fakeLines.length &&  
-        <div>
-          <span>$<span className="blinking-cursor">|</span></span>
-        </div>
+        lineIndex >= aboutMeLines.length && <BlinkingCursorFinal />
       }
     </div>
   );
