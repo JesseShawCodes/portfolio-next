@@ -17,6 +17,7 @@ function NavBar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <NavLink name="About" link="/about" />
             <NavLink name="Resume" link="/resume" />
             <NavLink name="Projects" link="/portfolio" />
           </ul>

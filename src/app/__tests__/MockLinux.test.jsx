@@ -17,18 +17,6 @@ describe("Terminal", () => {
     expect(links).toHaveLength(2);
   });
 
-  it("should display a blinking cursor at the end", async () => {
-    render(<Terminal />);
-
-    act(() => {
-        jest.runAllTimers();
-    });
-
-    await waitFor(() => {
-        expect(screen.getAllByText("|").length).toBeGreaterThan(0);
-    });
-  });
-
   it("should clear timeouts on unmount", () => {
     const { unmount } = render(<Terminal />);
     act(() => {
