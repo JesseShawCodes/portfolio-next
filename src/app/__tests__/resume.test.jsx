@@ -24,6 +24,15 @@ global.fetch = jest.fn((url) => {
                         description: 'Test description',
                         technologies: ['React', 'Node.js'],
                     },
+                    {
+                        title: 'software Engineer',
+                        company: 'Test Company Inc',
+                        startdate: '2010-01-01',
+                        enddate: '2013-01-01',
+                        description: 'Test description',
+                        technologies: ['React', 'Node.js'],
+                        secondaryTechnologies: ['GraphQL', 'TypeScript'],
+                    },
                 ],
             }),
         });
