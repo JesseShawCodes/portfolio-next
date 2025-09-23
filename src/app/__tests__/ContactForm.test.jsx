@@ -17,7 +17,7 @@ describe('ContactForm', () => {
     fireEvent.change(getByLabelText('Email'), { target: { value: 'john.doe@example.com' } });
     fireEvent.change(getByLabelText('Message'), { target: { value: 'Test message' } });
 
-    fireEvent.click(getByText('Send'));
+    fireEvent.click(getByText('Send a Message'));
 
     await waitFor(() => {
       expect(global.fetch).toHaveBeenCalledWith('/api/send', {
@@ -42,7 +42,7 @@ describe('ContactForm', () => {
     fireEvent.change(getByLabelText('Email'), { target: { value: 'john.doe@example.com' } });
     fireEvent.change(getByLabelText('Message'), { target: { value: 'Test message' } });
 
-    fireEvent.click(getByText('Send'));
+    fireEvent.click(getByText('Send a Message'));
 
     expect(await findByText('Something went wrong. Please try again.')).toBeInTheDocument();
   });
@@ -55,7 +55,7 @@ describe('ContactForm', () => {
     fireEvent.change(getByLabelText('Email'), { target: { value: 'john.doe@example.com' } });
     fireEvent.change(getByLabelText('Message'), { target: { value: 'Test message' } });
 
-    fireEvent.click(getByText('Send'));
+    fireEvent.click(getByText('Send a Message'));
 
     expect(await findByText('Something went wrong. Please try again.')).toBeInTheDocument();
   });

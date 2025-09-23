@@ -61,6 +61,7 @@ export default async function RootLayout({ children }) {
         </div>
         </ThemeProvider>
         <BootstrapClient />
+        <div id="modal-root"></div>
       </body>
     </html>
   );

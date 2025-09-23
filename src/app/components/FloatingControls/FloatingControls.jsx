@@ -11,9 +11,9 @@ function FloatingControls() {
   return (
     <div className="floating-controls">
       <BackToTop />
-      {/*<ContactButton openModal={openModal} />*/}
+      <ContactButton openModal={openModal} />
       <ThemeButton />
-      {/*<ContactModal isOpen={isOpen} onClose={closeModal} />*/}
+      <ContactModal isOpen={isOpen} onClose={closeModal} />
     </div>
   );
 }
