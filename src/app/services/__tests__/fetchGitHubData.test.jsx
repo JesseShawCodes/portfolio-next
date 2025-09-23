@@ -1,4 +1,4 @@
-import { fetchGitHubData } from '../services/fetchGitHubData';
+import { fetchGitHubData } from '../fetchGitHubData';
 
 // Mock the global fetch function
 global.fetch = jest.fn();

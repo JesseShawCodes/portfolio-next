@@ -1,4 +1,4 @@
-import { fetchCmsData } from '../services/fetchCmsData';
+import { fetchCmsData } from '../fetchCmsData';
 
 // Mock the global fetch function
 global.fetch = jest.fn();

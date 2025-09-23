@@ -1,49 +1,10 @@
 import React, { useState } from 'react';
 
-const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  const [status, setStatus] = useState('');
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus('sending');
-
-    try {
-      const res = await fetch('/api/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (res.ok) {
-        setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setStatus('error');
-      }
-    } catch (error) {
-      setStatus('error');
-    }
-  };
-
+const ContactForm = ({handleChange, submit, formData, status}) => {
   return (
     <>
       <p className="text-muted text-center mb-4">Thank you for visiting my portfolio. Please send me a quick message if you'd like to say hello.</p>
-      <form className="mb-2" onSubmit={handleSubmit}>
+      <form className="mb-2" onSubmit={submit}>
         {status === 'success' && <div className="alert alert-success">Message sent successfully!</div>}
         {status === 'error' && <div className="alert alert-danger">Something went wrong. Please try again.</div>}
         <div className="mb-3">
