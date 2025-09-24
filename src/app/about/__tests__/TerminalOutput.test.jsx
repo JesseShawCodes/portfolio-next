@@ -10,7 +10,7 @@ describe('TerminalOutput', () => {
       picture: '/test.jpg',
     };
     const { getByAltText } = render(<TerminalOutput output={output} />);
-    expect(getByAltText('Output')).toBeInTheDocument();
+    expect(getByAltText('Test output')).toBeInTheDocument();
   });
 
   it('renders the output with a link', () => {

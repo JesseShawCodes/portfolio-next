@@ -70,9 +70,9 @@ $utilities: map-merge(
     }
   }
 
-  #theme-container {
+  #button-container {
     transition: opacity 1.4s ease-in-out;
-    #change-theme {
+    #change-theme, #load-terminal, #contact-me {
 
         z-index: 99; 
         border: none;

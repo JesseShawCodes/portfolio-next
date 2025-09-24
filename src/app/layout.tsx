@@ -9,6 +9,7 @@ import BootstrapClient from "./components/BootstrapClient";
 
 import FloatingControls from "./components/FloatingControls/FloatingControls";
 import Script from 'next/script';
+import { TerminalProvider } from './context/TerminalContext';
 
 export const metadata = {
   title: "Jesse Shaw | Full Stack Developer",
@@ -50,16 +51,18 @@ export default async function RootLayout({ children }) {
               `
             }
           </Script>
-        <ThemeProvider>
-        <div className="d-flex flex-column min-vh-100">
-          <NavBar />
-          <main className="flex-grow-1  bg-gradient-my-gradient">
-            {children}
-          </main>
-          <FloatingControls />
-          <Footer />
-        </div>
-        </ThemeProvider>
+        <TerminalProvider>
+          <ThemeProvider>
+            <div className="d-flex flex-column min-vh-100">
+              <NavBar />
+              <main className="flex-grow-1  bg-gradient-my-gradient">
+                {children}
+              </main>
+              <FloatingControls />
+              <Footer />
+            </div>
+          </ThemeProvider>
+        </TerminalProvider>
         <BootstrapClient />
         <div id="modal-root"></div>
       </body>

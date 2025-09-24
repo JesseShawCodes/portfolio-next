@@ -15,7 +15,7 @@ function ThemeButton() {
 
   return (
     showButton && isMounted && (
-      <div id="theme-container">
+      <div id="button-container">
         <button
           aria-label="Change Theme"
           id="change-theme"

@@ -3,6 +3,7 @@ import TerminalLine from "./TerminalLine";
 import TerminalOutput from "./TerminalOutput";
 import BlinkingCursor from "./BlinkingCursor";
 import BlinkingCursorFinal from "./BlinkingCursorFinal";
+import { useTerminal } from "../context/TerminalContext";
 
 const aboutMeLines = [
   { command: "sudo apt install about-me", progress: true },
@@ -38,6 +39,11 @@ const Terminal = ({ disableAnimations = false }) => {
   const [isCommandDone, setIsCommandDone] = useState(false);
 
   const [showProgress, setShowProgress] = useState(false);
+
+  const { terminalLoadAll } = useTerminal();
+  if (terminalLoadAll) {
+    disableAnimations = true;
+  }
 
   useEffect(() => {
     if (lineIndex >= aboutMeLines.length) return;
@@ -113,7 +119,7 @@ const Terminal = ({ disableAnimations = false }) => {
       {displayedLines.map((line, i) => (
         <div key={i}>
           <TerminalLine line={line}/>
-          <TerminalOutput output={line} />
+          <TerminalOutput output={line} disableAnimations={disableAnimations} />
         </div>
       ))}
 
