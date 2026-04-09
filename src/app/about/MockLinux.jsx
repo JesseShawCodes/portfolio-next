@@ -12,7 +12,7 @@ const aboutMeLines = [
   { command: "cat ~/life/roles.txt", output: "Husband | Father | Developer | Traveler | Music Producer" },
   {
     command: "echo $marriage_years",
-    output: "3 years and counting! ❤️",
+    output: "4 years and counting! ❤️",
     picture: "/images/IMG_0105.jpg"
   },
   { command: "$echo $KID_COUNT", output: "1 (Best project ever)"},
