@@ -1,7 +1,7 @@
 import cmsMock from '../../config/cms-mock.json';
 import { fetchCmsData } from './fetchCmsData';
 
-function useCmsMock(): boolean {
+function getCmsMock(): boolean {
   return process.env.NEXT_PUBLIC_USE_CMS_MOCK === 'true';
 }
 
@@ -10,7 +10,7 @@ function getApiUrl(path: string): string {
 }
 
 export async function getCmsRepos() {
-  if (useCmsMock()) {
+  if (getCmsMock()) {
     return cmsMock.repos;
   }
 
@@ -18,7 +18,7 @@ export async function getCmsRepos() {
 }
 
 export async function getCmsProjects() {
-  if (useCmsMock()) {
+  if (getCmsMock()) {
     return cmsMock.projects;
   }
 
@@ -32,7 +32,7 @@ export async function getCmsProjects() {
 }
 
 export async function getCmsWorkExperiences() {
-  if (useCmsMock()) {
+  if (getCmsMock()) {
     return cmsMock.workExperiences;
   }
 
@@ -46,7 +46,7 @@ export async function getCmsWorkExperiences() {
 }
 
 export async function getCmsEducations() {
-  if (useCmsMock()) {
+  if (getCmsMock()) {
     return cmsMock.educations;
   }
 
