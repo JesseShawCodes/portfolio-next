@@ -1,0 +1,195 @@
+{
+  "repos": {
+    "data": [
+      {
+        "name": "portfolio-next",
+        "pinned": true,
+        "url": "https://github.com/JesseShawCodes/portfolio-next"
+      },
+      {
+        "name": "juce_synth_1",
+        "pinned": true,
+        "url": "https://github.com/JesseShawCodes/juce_synth_1"
+      },
+      {
+        "name": "portfolio",
+        "pinned": false,
+        "url": "https://github.com/JesseShawCodes/portfolio"
+      }
+    ]
+  },
+  "projects": {
+    "data": [
+      {
+        "name": "Personal Portfolio",
+        "description": [
+          "A Next.js portfolio site with a headless CMS, GitHub integration, and interactive terminal-style about page."
+        ],
+        "link": "https://jesse-shaw.netlify.app",
+        "logo": {
+          "url": "/globe.svg"
+        },
+        "technologies": [
+          {
+            "title": "Frontend",
+            "list": ["React", "Next.js", "Bootstrap", "SCSS"]
+          },
+          {
+            "title": "Backend & CMS",
+            "list": ["Strapi", "REST APIs"]
+          },
+          {
+            "title": "Tooling",
+            "list": ["Jest", "Git", "Netlify"]
+          }
+        ]
+      }
+    ]
+  },
+  "workExperiences": {
+    "data": [
+      {
+        "title": "Senior Software Developer",
+        "company": "MDLive (via Brooksource)",
+        "startdate": "2025-11-01",
+        "enddate": null,
+        "description": [
+          "Developed and maintained a complex, multi-application healthcare platform supporting Patient Portal, Provider Portal, and Affiliation Management systems, built primarily with Ruby on Rails (backend) and React (frontend).",
+          "Led frontend and backend feature development across high-impact patient-facing experiences, including service discovery, appointment workflows, and provider search enhancements.",
+          "Implemented feature flagging and A/B testing infrastructure using LaunchDarkly, delivering the first production experiment and establishing patterns for controlled feature rollouts across web and mobile clients.",
+          "Designed and implemented system-level configuration flags (including mobile-specific toggles for iOS/Android), enabling dynamic feature control and safer deployments.",
+          "Built and enhanced React component architecture (e.g., service cards, promoted content modules), improving UI consistency, accessibility (WCAG), and performance.",
+          "Contributed to a Rails-based internal application (\"Stern\"), including backend services, RSpec test coverage, and refactoring efforts to support new patient features.",
+          "Improved application reliability and observability by integrating and leveraging tools like Honeybadger for error monitoring and debugging production issues.",
+          "Identified and mitigated performance risks by analyzing N+1 queries and data-loading inefficiencies to improve scalability of provider search and listing features.",
+          "Implemented data migration and seeding workflows using tools like AfterParty to support new healthcare features.",
+          "Performed cross-application regression analysis and release validation, including reviewing Honeybadger incidents, identifying problematic commits, implementing and testing fixes, and conducting final issue audits to improve reliability across a multi-service healthcare platform.",
+          "Delivered features for email/SMS notification systems, patient communication workflows, and localization work, including Spanish translation fixes.",
+          "Collaborated cross-functionally with mobile, QA, product, and analytics teams, including testing, debugging in QA, and production validation.",
+          "Contributed to Adobe Analytics integration to improve tracking visibility and data-driven decision-making.",
+          "Strengthened test coverage and code quality through RSpec and frontend testing, while contributing to accessibility improvements.",
+          "Contributed to and tested a RabbitMQ-driven SMS notification system, ensuring reservation change events were queued and processed correctly, with experience in event-driven architecture and background jobs."
+        ],
+        "technologies": ["Ruby on Rails", "React", "MySQL", "Docker", "Cursor"],
+        "secondarytechnologies": ["Honeybadger", "Rails Testing", "LaunchDarkly", "RSpec", "Figma", "AWS"]
+      },
+      {
+        "title": "Senior Web Developer",
+        "company": "Amentum",
+        "startdate": "2020-02-01",
+        "enddate": "2025-10-01",
+        "description": [
+          "Led front-end development for the UX/UI team, delivering responsive, accessible user interfaces for web-based applications within the U.S. Department of Defense.",
+          "Led front-end development for product relaunch landing page, including a Drupal CMS integration into a Ruby on Rails environment to enable dynamic content management.",
+          "Implemented front-end architecture using Turbo, Stimulus, and ViewComponents to build interactive, performant user interfaces.",
+          "Collaborated regularly with designers using Figma and Webflow to translate design prototypes into production-ready interfaces.",
+          "Developed multiple project dashboards and calendar interfaces using Hotwire (Turbo and Stimulus), FullCalendar.js, and SwiperJs.",
+          "Advocated for front-end best practices in accessibility (WCAG compliance), responsive design, and modular component architecture.",
+          "Implemented responsive layouts using CSS Grid, Flexbox, and SCSS partials with Rails ViewComponents.",
+          "Optimized front-end load performance by refactoring the asset pipeline and leveraging lazy loading.",
+          "Built reusable UI components for a design system, enhancing consistency across multiple Rails applications.",
+          "Developed and maintained automated UI and unit tests leveraging the Minitest framework to guarantee robust code quality.",
+          "Actively contributed to Agile ceremonies – design reviews, sprint retrospectives, and daily standups – representing the front-end perspective.",
+          "Developed data management application utilizing React for the front end and a Django backend.",
+          "Designed and implemented Rails models, controllers, and database schemas to support new front-end features, ensuring scalable data structures and efficient API endpoints.",
+          "Streamlined application deployments to AWS infrastructure through collaborative efforts with DevOps teams, leveraging GitLab CI/CD for automated builds and releases."
+        ],
+        "technologies": ["Ruby on Rails", "PostgreSQL", "Docker", "Drupal"],
+        "secondarytechnologies": ["MySQL", "Django", "Bash Scripting", "Figma", "Amazon Web Services", "PyTest", "Rails Testing", "FullCalendar", "Google Analytics"]
+      },
+      {
+        "title": "Web Developer",
+        "company": "South Moon Under",
+        "startdate": "2018-10-01",
+        "enddate": "2020-02-01",
+        "description": [
+          "Served as the sole front-end developer, collaborating closely with design, marketing, and operations teams to maintain and enhance the company's e-commerce experience.",
+          "Built and optimized responsive, mobile-first UI components using HTML, CSS, JavaScript, and jQuery within Salesforce Commerce Cloud (Demandware).",
+          "Translated Photoshop designs into production ready landing pages for promotional campaigns and seasonal events.",
+          "Partnered with the creative team to ensure pixel-perfect UX/UI implementation and advised on web accessibility, responsive design, and UX best practices.",
+          "Improved SEO performance and site speed, implementing structured data, meta-tagging, lazy loading, and template optimizations to boost organic visibility.",
+          "Developed and tested A/B experiments using the Monetate platform, leading to a 10–15% lift in conversion rate and a 15–20% increase in revenue per session.",
+          "Integrated third-party services (Bronto, Channel Advisor, Facebook, Google Analytics) and maintained cross-system data accuracy.",
+          "Managed and optimized Commerce Cloud backend pipelines supporting product feeds and payment workflows, ensuring seamless integration between front-end and back-end systems."
+        ],
+        "technologies": ["Salesforce Commerce Cloud", "jQuery", "JavaScript", "HTML", "CSS"],
+        "secondarytechnologies": ["Monetate (A/B Testing)", "Google Analytics", "Bronto", "ChannelAdvisor"]
+      },
+      {
+        "title": "Web Development Java Instructional Assistant (Contract)",
+        "company": "LaunchCode",
+        "startdate": "2018-10-01",
+        "enddate": "2019-03-01",
+        "description": [
+          "Taught web development and Java skills to program learners using approved curriculum.",
+          "Introduced and demonstrated the practical application of curriculum using exercises to reinforce concepts.",
+          "Facilitated one-on-one sessions with program learners during office hours to assist with program concepts."
+        ]
+      },
+      {
+        "title": "Web Developer",
+        "company": "Jesse Shaw Codes (Freelance)",
+        "startdate": "2018-05-01",
+        "enddate": null,
+        "description": [
+          "Developed React.js web applications to make desktop applications mobile friendly and implemented application functions using Redux.",
+          "Integrated RESTful APIs in React.js application to enhance functionality and improve the user interface with real-time data fetching.",
+          "Developed custom Wordpress themes incorporating client branding to ensure responsive design across all devices."
+        ],
+        "technologies": ["React", "Django", "Python", "Next.JS", "P5JS"]
+      },
+      {
+        "title": "Substitute Teacher",
+        "company": "Anne Arundel County Public Schools",
+        "startdate": "2017-01-01",
+        "enddate": "2018-10-01",
+        "description": [
+          "Instructed on topics according to lesson plan and curriculum requirements.",
+          "Monitored and evaluated student performance following Anne Arundel County procedures and practices.",
+          "Supervised students in a variety of school-related settings and activities."
+        ]
+      },
+      {
+        "title": "Project Manager",
+        "company": "Optimal Solutions Group, LLC",
+        "startdate": "2013-09-01",
+        "enddate": "2016-12-01",
+        "description": [
+          "Managed project activities and budget for a contract with the U.S. Small Business Administration.",
+          "Effectively controlled personnel, materials, and equipment to manage the project budget. Tracked monthly utilization against budget projections to manage burn rates.",
+          "Identified project risks, assessed impact to the schedule and budget, and developed mitigation strategies.",
+          "Managed the development and timely submission of key deliverables (e.g., project management plan, work breakdown structure, etc.).",
+          "Coordinated and facilitated client meetings and working sessions with key stakeholders.",
+          "Created and launched the National Women's Business Council's GROW Her Business website built with WordPress.",
+          "Designed, developed, and deployed surveys using Survey Monkey and the MAX Survey tool. These surveys supported research for Women's Business Centers, the Regional Innovation Cluster (RIC), and the ScaleUp Initiative and provided input to project findings."
+        ],
+        "technologies": ["STATA", "Wordpress"]
+      }
+    ]
+  },
+  "educations": {
+    "data": [
+      {
+        "schoolName": "Chegg Skills (Formerly Thinkful)",
+        "degree": "Full Stack Development",
+        "field": "Web Development",
+        "startDate": "2018-01-01",
+        "endDate": "2018-12-01"
+      },
+      {
+        "schoolName": "University of Maryland",
+        "degree": "Bachelor's of Arts",
+        "field": "Economics",
+        "startDate": "2006-09-01",
+        "endDate": "2010-05-01"
+      },
+      {
+        "schoolName": "Anne Arundel Community College",
+        "degree": "Associates of Science",
+        "field": "Physics",
+        "startDate": "2005-09-01",
+        "endDate": "2007-05-01"
+      }
+    ]
+  }
+}

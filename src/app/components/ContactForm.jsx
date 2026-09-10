@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { getLocale } from '../../config/locale';
 
 const ContactForm = ({handleChange, submit, formData, status}) => {
+  const { contact } = getLocale();
+
   return (
     <>
-      <p className="text-muted text-center mb-4">Thank you for visiting my portfolio. Please send me a quick message if you'd like to say hello.</p>
+      <p className="text-muted text-center mb-4">{contact.intro}</p>
       <form className="mb-2" onSubmit={submit}>
-        {status === 'success' && <div className="alert alert-success">Message sent successfully!</div>}
-        {status === 'error' && <div className="alert alert-danger">Something went wrong. Please try again.</div>}
+        {status === 'success' && <div className="alert alert-success">{contact.success}</div>}
+        {status === 'error' && <div className="alert alert-danger">{contact.error}</div>}
         <div className="mb-3">
-          <label htmlFor="name" className="form-label">Name</label>
+          <label htmlFor="name" className="form-label">{contact.name}</label>
           <input
             type="text"
             className="form-control rounded-4"
@@ -20,7 +23,7 @@ const ContactForm = ({handleChange, submit, formData, status}) => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email</label>
+          <label htmlFor="email" className="form-label">{contact.email}</label>
           <input
             type="email"
             className="form-control rounded-4"
@@ -32,7 +35,7 @@ const ContactForm = ({handleChange, submit, formData, status}) => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="message" className="form-label">Message</label>
+          <label htmlFor="message" className="form-label">{contact.message}</label>
           <textarea
             className="form-control rounded-4"
             id="message"
@@ -45,7 +48,7 @@ const ContactForm = ({handleChange, submit, formData, status}) => {
         </div>
         <div>
         <button type="submit" className="btn btn-primary w-100" disabled={status === 'sending'}>
-          {status === 'sending' ? 'Sending...' : 'Send a Message'}
+          {status === 'sending' ? contact.submitting : contact.submit}
         </button>
         </div>
       </form>

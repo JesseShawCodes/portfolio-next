@@ -10,23 +10,26 @@ import BootstrapClient from "./components/BootstrapClient";
 import FloatingControls from "./components/FloatingControls/FloatingControls";
 import Script from 'next/script';
 import { TerminalProvider } from './context/TerminalContext';
+import { getLocale } from '../config/locale';
+
+const { site } = getLocale();
 
 export const metadata = {
-  title: "Jesse Shaw | Full Stack Developer",
-  metadataBase: new URL('https://jesse-shaw.netlify.app'),
+  title: site.title,
+  metadataBase: new URL(site.url),
   icons: {
     icon: "/favicon.png",
   },
-  description: "Full stack developer with expertise in React, Ruby on Rails, and headless CMS technologies. Let's build something great together!",
+  description: site.description,
   openGraph: {
-    title: "Jesse Shaw | Full Stack Developer",
-    description: "Full stack developer with expertise in React, Ruby on Rails, and headless CMS technologies. Let's build something great together!",
-    url: "https://jesse-shaw.netlify.app",
-    siteName: "Jesse Shaw | Full Stack Developer",
+    title: site.title,
+    description: site.description,
+    url: site.url,
+    siteName: site.title,
     images: [
         {
-            url: '/opengraph-image.png', // Or a full URL for external images
-            alt: 'Jesse Shaw | Full Stack Developer',
+            url: '/opengraph-image.png',
+            alt: site.openGraphImageAlt,
         },
     ],
 }

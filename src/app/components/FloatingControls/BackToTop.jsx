@@ -2,8 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { getLocale } from '../../../config/locale';
 
 function BackToTop() {
+  const { common } = getLocale();
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
@@ -30,7 +32,7 @@ function BackToTop() {
     showButton && (
       <div className="scrollToTop" id="back_to_top_container">
         <button
-          aria-label="Back to Top"
+          aria-label={common.backToTop}
           id="back_to_top"
           className="btn-secondary"
           onClick={handleScrollToTop}

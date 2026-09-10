@@ -9,7 +9,7 @@ describe('Footer', () => {
 
   it('displays the copyright text', () => {
     render(<Footer />);
-    expect(screen.getByText(/© 2025/)).toBeInTheDocument();
+    expect(screen.getByText(/© 2026/)).toBeInTheDocument();
   });
 
   it('renders social media links', () => {

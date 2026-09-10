@@ -4,29 +4,9 @@ import TerminalOutput from "./TerminalOutput";
 import BlinkingCursor from "./BlinkingCursor";
 import BlinkingCursorFinal from "./BlinkingCursorFinal";
 import { useTerminal } from "../context/TerminalContext";
+import { getLocale } from "../../config/locale";
 
-const aboutMeLines = [
-  { command: "sudo apt install about-me", progress: true },
-  { command: "whoami", output: "My name is Jesse Shaw. I am a Full Stack Developer 🧑‍💻"},
-  // { command: "cat ~/bio.txt", output: "I am a developer who loves building things that live on the internet. My goal is to always build products that provide real value to users." },
-  { command: "cat ~/life/roles.txt", output: "Husband | Father | Developer | Traveler | Music Producer" },
-  {
-    command: "echo $marriage_years",
-    output: "4 years and counting! ❤️",
-    picture: "/images/IMG_0105.jpg"
-  },
-  { command: "$echo $KID_COUNT", output: "1 (Best project ever)"},
-  { command: "cat ~/skills.txt", output: "JavaScript, React, Ruby on Rails, Salesforce Commerce Cloud, SQL, HTML, CSS, Python, Django, RESTful APIs, Git, Docker" },
-  { command: "cat ~/passport/stamps.txt", output: "Spain, Portugal, France, England, Canada" },
-  {
-    command: "echo $PLACES_I_WANT_TO_TRAVEL",
-    output: "Japan, Brazil, Iceland, Africa, Hong Kong",
-  },
-  { command: "ls ~/hobbies/music", output: "synths/ logc_pro_projects/ guitar/"},
-  { command: "echo $FUTURE", output: "Blending my technical skills and my creativity to create unique user experiences." },
-  { command: "cat portfolio.md", output: "# My Portfolio\n\nYou can check out my portfolio at the link below.", link: "/portfolio" },
-  { command: "cat Resume.md", link: "/resume" },
-];
+const aboutMeLines = getLocale().about.terminal.lines;
 
 // Disable animations for testing purposes. Always false in production
 const Terminal = ({ disableAnimations = false }) => {

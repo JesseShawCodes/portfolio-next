@@ -5,9 +5,11 @@ import Repo from "../components/Repo";
 import Link from "next/link";
 import Project from "./projects";
 import { fetchGitHubData } from "../services/fetchGitHubData";
-import { fetchCmsData } from "../services/fetchCmsData";
+import { getCmsRepos, getCmsProjects } from "../services/cms";
+import { getLocale } from "../../config/locale";
 
 export default function Page() {
+  const { portfolio, site } = getLocale();
   const [repositories, setRepositories] = useState([]);
   const [projects, setProjects] = useState([]);
 
@@ -24,9 +26,9 @@ export default function Page() {
         setIsLoadingCms(true);
 
         const [githubFetch, selectedRepos, projectsResponse] = await Promise.all([
-          fetchGitHubData("https://api.github.com/users/JesseShawCodes/repos?per_page=100&sort=updated"),
-          fetchCmsData(`${process.env.NEXT_PUBLIC_API_URL}/api/repos?populate=*`),
-          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate=logo`, { cache: 'force-cache' })
+          fetchGitHubData(`https://api.github.com/users/${site.githubUsername}/repos?per_page=100&sort=updated`),
+          getCmsRepos(),
+          getCmsProjects(),
         ]);
 
         const githubRepos = githubFetch
@@ -50,8 +52,7 @@ export default function Page() {
 
         setRepositories(githubRepos);
 
-        const projectsData = await projectsResponse.json();
-        setProjects(projectsData.data);
+        setProjects(projectsResponse.data);
       } catch (error) {
         setIsErrorGithub({
           error: true,
@@ -68,17 +69,17 @@ export default function Page() {
     };
 
     fetchData();
-  }, []);
+  }, [site.githubUsername]);
 
   if (isLoadingGithub || isLoadingCms) {
-    return <div className="container">Loading...</div>;
+    return <div className="container">{portfolio.loading}</div>;
   }
 
   return (
     <div className="container">
-      <h1>Projects</h1>
+      <h1>{portfolio.heading}</h1>
       <div>
-        <p>My time is currently being taken up by my Full Time job at Amentum. But I do wanna make sure I am putting in extra time to keep up with new tools and work on some of my own projects to stay sharp.</p>
+        <p>{portfolio.intro}</p>
 
           <div>
             {
@@ -98,8 +99,8 @@ export default function Page() {
             }
           </div>
 
-        <p>If you would like to keep up with all of the other work I am doing outside of my work at Amentum, please check out my GitHub projects below or <Link href="https://github.com/JesseShawCodes" target='_blank'>
-            visit my GitHub profile
+        <p>{portfolio.githubPrompt} <Link href={`https://github.com/${site.githubUsername}`} target='_blank'>
+            {portfolio.githubLinkText}
         </Link>.</p>
         <div style={{ maxWidth: '1200px', margin: '0px auto' }}>
           <div>

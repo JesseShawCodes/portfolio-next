@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import ReactMarkdown from 'react-markdown';
 import TechnologyItem from "../components/TechnologyItem";
+import DescriptionContent from "../components/DescriptionContent";
 import formatMyDate from "../services/services";
 
 function WorkExperienceCard({ project, index }) {
@@ -28,9 +28,7 @@ function WorkExperienceCard({ project, index }) {
       </div>
 
       <div className="card-body p-6">
-        <ReactMarkdown>
-          {project.description}
-        </ReactMarkdown>
+        <DescriptionContent description={project.description} />
       </div>
       {
         project.technologies ?

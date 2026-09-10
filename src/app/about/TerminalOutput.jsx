@@ -1,7 +1,10 @@
 import Link from "next/link";
 import ProgressBar from "./ProgressBar";
+import { getLocale } from "../../config/locale";
 
 function TerminalOutput({ output, disableAnimations }) {
+  const { about } = getLocale();
+  const { progressLabel, linkText } = about.terminal;
   let image;
   let link;
   let progress;
@@ -11,14 +14,14 @@ function TerminalOutput({ output, disableAnimations }) {
   if (output.output === output.finalOutput && output.picture || output.link || output.progress) {
     if (output.progress) {
       progress = <ProgressBar 
-        label={"Hi. Thanks for visiting my portfolio. Let me get things set up here..."} 
+        label={progressLabel} 
       />;
     }
     if (output.picture !== undefined) {
       image = <img src={output.picture} alt={output.output} style={{ width: "300px", borderRadius: "8px", marginTop: "10px" }} />;
     }
     if (output.link) {
-      link = <Link href={output.link}>Click Here</Link>;
+      link = <Link href={output.link}>{linkText}</Link>;
     }
   }
   return (

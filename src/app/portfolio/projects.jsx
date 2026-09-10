@@ -2,8 +2,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import ReactMarkdown from "react-markdown";
 import TechnologyItem from "../components/TechnologyItem";
+import DescriptionContent from "../components/DescriptionContent";
 
 function Project({project}) {
   return (
@@ -14,9 +14,7 @@ function Project({project}) {
       </div>
       <div className="card-body">
         <div>
-          <ReactMarkdown>
-          {project.description}
-          </ReactMarkdown>
+          <DescriptionContent description={project.description} />
         </div>
         <div>
           <Link href={project.link} target="_blank">

@@ -1,0 +1,100 @@
+{
+  "site": {
+    "name": "Jesse Shaw",
+    "title": "Jesse Shaw | Full Stack Developer",
+    "description": "Full stack developer with expertise in React, Ruby on Rails, and headless CMS technologies. Let's build something great together!",
+    "url": "https://jesse-shaw.netlify.app",
+    "openGraphImageAlt": "Jesse Shaw | Full Stack Developer",
+    "githubUsername": "JesseShawCodes"
+  },
+  "nav": {
+    "resume": "Resume",
+    "projects": "Projects",
+    "about": "About",
+    "toggleNavigation": "Toggle navigation",
+    "logoAlt": "Jesse Shaw portfolio logo"
+  },
+  "home": {
+    "heading": "My name is Jesse. I am a Full Stack Developer",
+    "subHeading": "From logic to layout, my goal is to build experiences in my work that feel good to use and are fun to share.",
+    "content": "I am a Full Stack Developer currently working on a Learning Management System application at Amentum. I love coding not just for the challenge, but because it is a form of creation - taking ideas from sketch to screen. Whether it's crafting clean APIs or intuitive front ends, I enjoy the whole stack. I am passionate about collaborating with developers, designers, and big thinkers who care about quality and aren't afraid to experiment. If you are someone who builds with curiosity and purpose, we will probably get along just great.",
+    "imageAlt": "Jesse Shaw picture",
+    "ctaProjects": "Projects I am working on",
+    "ctaResume": "My Resume"
+  },
+  "about": {
+    "heading": "About Me",
+    "terminal": {
+      "progressLabel": "Hi. Thanks for visiting my portfolio. Let me get things set up here...",
+      "linkText": "Click Here",
+      "lines": [
+        { "command": "sudo apt install about-me", "progress": true },
+        { "command": "whoami", "output": "My name is Jesse Shaw. I am a Full Stack Developer 🧑‍💻" },
+        { "command": "cat ~/life/roles.txt", "output": "Husband | Father | Developer | Traveler | Music Producer" },
+        {
+          "command": "echo $marriage_years",
+          "output": "5 years and counting! ❤️",
+          "picture": "/images/IMG_0105.jpg"
+        },
+        { "command": "$echo $KID_COUNT", "output": "1 (Best project ever)" },
+        { "command": "cat ~/skills.txt", "output": "JavaScript, React, Ruby on Rails, Salesforce Commerce Cloud, SQL, HTML, CSS, Python, Django, RESTful APIs, Git, Docker" },
+        { "command": "cat ~/passport/stamps.txt", "output": "Spain, Portugal, France, England, Canada" },
+        { "command": "echo $PLACES_I_WANT_TO_TRAVEL", "output": "Japan, Brazil, Iceland, Africa, Hong Kong" },
+        { "command": "ls ~/hobbies/music", "output": "synths/ logc_pro_projects/ guitar/" },
+        { "command": "echo $FUTURE", "output": "Blending my technical skills and my creativity to create unique user experiences." },
+        { "command": "cat portfolio.md", "output": "# My Portfolio\n\nYou can check out my portfolio at the link below.", "link": "/portfolio" },
+        { "command": "cat Resume.md", "link": "/resume" }
+      ]
+    }
+  },
+  "portfolio": {
+    "heading": "Projects",
+    "intro": "My time is currently being taken up by my Full Time job at Amentum. But I do wanna make sure I am putting in extra time to keep up with new tools and work on some of my own projects to stay sharp.",
+    "githubPrompt": "If you would like to keep up with all of the other work I am doing outside of my work at Amentum, please check out my GitHub projects below or",
+    "githubLinkText": "visit my GitHub profile",
+    "loading": "Loading..."
+  },
+  "resume": {
+    "heading": "Resume",
+    "workExperience": "Work Experience",
+    "education": "Education",
+    "downloadCv": "Download CV"
+  },
+  "contact": {
+    "buttonLabel": "Contact Me",
+    "intro": "Thank you for visiting my portfolio. Please send me a quick message if you'd like to say hello.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send a Message",
+    "submitting": "Sending...",
+    "success": "Message sent successfully!",
+    "error": "Something went wrong. Please try again."
+  },
+  "footer": {
+    "email": "JesseShawCodes@gmail.com.com",
+    "emailTitle": "Email me",
+    "social": {
+      "instagram": {
+        "title": "Instagram",
+        "url": "https://www.instagram.com/jesseshawcodes/"
+      },
+      "linkedin": {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/itsjesseshaw/"
+      },
+      "twitter": {
+        "title": "Twitter",
+        "url": "https://x.com/jesseshawcodes"
+      },
+      "github": {
+        "title": "GitHub",
+        "url": "http://github.com/jesseShawCodes"
+      }
+    }
+  },
+  "common": {
+    "backToTop": "Back to Top",
+    "switchTheme": "Switch theme"
+  }
+}

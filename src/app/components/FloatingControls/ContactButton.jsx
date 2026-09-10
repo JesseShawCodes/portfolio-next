@@ -1,10 +1,11 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon, faSun, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { useTheme } from '../../context/ThemeContext';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { getLocale } from '../../../config/locale';
 
 function ContactButton({ openModal }) {
+  const { contact } = getLocale();
   const [showButton] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -16,8 +17,8 @@ function ContactButton({ openModal }) {
     showButton && isMounted && (
       <div id="button-container">
         <button
-          aria-label="Contact Me"
-          title="Contact Me"
+          aria-label={contact.buttonLabel}
+          title={contact.buttonLabel}
           id="contact-me"
           className="btn-secondary"
           onClick={openModal}
