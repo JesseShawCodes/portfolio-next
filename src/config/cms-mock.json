@@ -55,6 +55,30 @@
             "list": ["Jest", "Git", "Netlify"]
           }
         ]
+      },
+      {
+        "name": "Dadgad",
+        "description": [
+          "A guitar tuning and music project."
+        ],
+        "link": "https://dadgad.netlify.app",
+        "logo": {
+          "url": "/dadgad_logo.png"
+        },
+        "technologies": [
+          {
+            "title": "Frontend",
+            "list": ["React", "Next.js", "Bootstrap", "SCSS"]
+          },
+          {
+            "title": "Backend & CMS",
+            "list": ["Django", "PostgreSQL", "Python", "Celery"]
+          },
+          {
+            "title": "Tooling",
+            "list": ["Jest", "Git", "Netlify"]
+          }
+        ]
       }
     ]
   },
