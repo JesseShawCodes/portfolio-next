@@ -4,17 +4,29 @@
       {
         "name": "portfolio-next",
         "pinned": true,
-        "url": "https://github.com/JesseShawCodes/portfolio-next"
+        "url": "https://github.com/JesseShawCodes/portfolio-next",
+        "description": "Personal portfolio site built with Next.js, featuring CMS-driven content and an interactive about page.",
+        "language": "TypeScript",
+        "topics": ["nextjs", "react", "scss", "jest"],
+        "commits": []
       },
       {
         "name": "juce_synth_1",
         "pinned": true,
-        "url": "https://github.com/JesseShawCodes/juce_synth_1"
+        "url": "https://github.com/JesseShawCodes/juce_synth_1",
+        "description": "A synthesizer project built with the JUCE audio framework.",
+        "language": "C++",
+        "topics": ["juce", "audio", "synthesizer"],
+        "commits": []
       },
       {
-        "name": "portfolio",
+        "name": "dadgad",
         "pinned": false,
-        "url": "https://github.com/JesseShawCodes/portfolio"
+        "url": "https://github.com/JesseShawCodes/dadgad",
+        "description": "A guitar tuning and music project.",
+        "language": "JavaScript",
+        "topics": ["music", "guitar"],
+        "commits": []
       }
     ]
   },
