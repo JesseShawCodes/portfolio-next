@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, useTheme } from '../context/ThemeContext';
@@ -83,5 +82,38 @@ describe('ThemeContext', () => {
       </ThemeProvider>
     );
     expect(document.body).toHaveAttribute('data-bs-theme', 'light');
+  });
+
+  it('toggles using light fallback when theme is still undefined', () => {
+    const ToggleOnUndefinedLayoutEffect = () => {
+      const { theme, toggleTheme } = useTheme();
+      const toggled = useRef(false);
+      useLayoutEffect(() => {
+        if (theme === undefined && !toggled.current) {
+          toggled.current = true;
+          toggleTheme();
+        }
+      });
+      return <span data-testid="theme">{theme}</span>;
+    };
+
+    render(
+      <ThemeProvider>
+        <ToggleOnUndefinedLayoutEffect />
+      </ThemeProvider>
+    );
+
+    expect(screen.getByTestId('theme')).toHaveTextContent('dark');
+    expect(localStorage.getItem('theme')).toBe('dark');
+  });
+
+  it('useTheme returns context value when used outside provider', () => {
+    const OutsideProviderComponent = () => {
+      const context = useTheme();
+      return <span data-testid="context">{context === undefined ? 'none' : 'defined'}</span>;
+    };
+
+    render(<OutsideProviderComponent />);
+    expect(screen.getByTestId('context')).toHaveTextContent('none');
   });
 });
