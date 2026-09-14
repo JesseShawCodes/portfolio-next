@@ -2,7 +2,7 @@ import React from "react";
 import Repo from "../components/Repo";
 import Link from "next/link";
 import Project from "./projects";
-import cmsMock from "../../config/cms-mock.json";
+import cmsMock from "../../config/content.json";
 import { getLocale } from "../../config/locale";
 
 function sortRepos(repos) {

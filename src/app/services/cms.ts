@@ -1,4 +1,4 @@
-import cmsMock from '../../config/cms-mock.json';
+import cmsMock from '../../config/content.json';
 import { fetchCmsData } from './fetchCmsData';
 
 function getCmsMock(): boolean {
