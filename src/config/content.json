@@ -23,7 +23,9 @@
         "name": "dadgad",
         "pinned": false,
         "url": "https://github.com/JesseShawCodes/dadgad",
-        "description": "A guitar tuning and music project.",
+        "description": [
+          "A guitar tuning and music project."
+        ],
         "language": "JavaScript",
         "topics": ["music", "guitar"],
         "commits": []
