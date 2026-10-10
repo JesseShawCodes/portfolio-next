@@ -96,5 +96,13 @@
   "common": {
     "backToTop": "Back to Top",
     "switchTheme": "Switch theme"
+  },
+  "notFound": {
+    "heading": "Page not found",
+    "lead": "Sorry, we couldn't find that page. It may have been moved, renamed, or the address might be mistyped.",
+    "suggestionsHeading": "This may be more of what you're looking for",
+    "backHome": "Back to home",
+    "destinations": [
+    ]
   }
 }
