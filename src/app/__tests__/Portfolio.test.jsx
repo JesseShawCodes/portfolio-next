@@ -7,7 +7,6 @@ describe('Portfolio Page', () => {
     render(<Page />);
 
     expect(screen.getByText('Projects')).toBeInTheDocument();
-    expect(screen.getByText('Personal Portfolio')).toBeInTheDocument();
     expect(screen.getByText('portfolio-next')).toBeInTheDocument();
     expect(screen.getByText('juce_synth_1')).toBeInTheDocument();
     expect(screen.getByText('dadgad')).toBeInTheDocument();

@@ -37,30 +37,6 @@
   "projects": {
     "data": [
       {
-        "name": "Personal Portfolio",
-        "description": [
-          "A Next.js portfolio site with a headless CMS, GitHub integration, and interactive terminal-style about page."
-        ],
-        "link": "https://jesse-shaw.netlify.app",
-        "logo": {
-          "url": "/globe.svg"
-        },
-        "technologies": [
-          {
-            "title": "Frontend",
-            "list": ["React", "Next.js", "Bootstrap", "SCSS"]
-          },
-          {
-            "title": "Backend & CMS",
-            "list": ["Strapi", "REST APIs"]
-          },
-          {
-            "title": "Tooling",
-            "list": ["Jest", "Git", "Netlify"]
-          }
-        ]
-      },
-      {
         "name": "Dadgad",
         "description": [
           "Dadgad is an interactive music discovery application that brings the excitement of March Madness to music listening. Inspired by tournament-style brackets, the application lets users compare tracks head-to-head, advance their favorites through successive rounds, and ultimately crown a champion.",
