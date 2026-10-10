@@ -14,7 +14,7 @@ function Project({project}) {
       </div>
       <div className="card-body">
         <div>
-          <DescriptionContent description={project.description} />
+          <DescriptionContent description={project.description} asParagraphs />
         </div>
         <div>
           <Link href={project.link} target="_blank">
