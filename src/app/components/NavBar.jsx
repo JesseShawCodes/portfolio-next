@@ -3,6 +3,7 @@ import { React } from 'react';
 import Link from 'next/link';
 import NavLink from './NavLink';
 import Image from 'next/image';
+import logo from '../media/image.webp';
 import { getLocale } from '../../config/locale';
 
 function NavBar() {
@@ -13,7 +14,7 @@ function NavBar() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
       <div className="container">
         <Link href="/" className="nav-link active navbar-brand">
-          <Image src={`https://${process.env.NEXT_PUBLIC_API_ROOT_MEDIA}/portfolio_logo_81df80a9d5.PNG`} alt={nav.logoAlt} width={30} height={30} className='me-3'/>
+          <Image src={logo} alt={nav.logoAlt} width={30} height={30} className='me-3'/>
           {siteName}
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label={nav.toggleNavigation}>
