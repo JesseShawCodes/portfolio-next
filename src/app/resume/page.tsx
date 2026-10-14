@@ -35,7 +35,7 @@ async function ResumePage() {
     <div className="antialiased d-flex flex-column min-vh-100">
       <div className='container'>
         <h1>{resume.heading}</h1>
-        <DownloadButton pdfUrl={`https://${process.env.NEXT_PUBLIC_API_ROOT_MEDIA}/${process.env.NEXT_PUBLIC_RESUME_DOWNLOAD}`}/>
+        <DownloadButton pdfUrl="/JesseShaw_Resume.pdf" />
         <h2>{resume.workExperience}</h2>
         {
           projects.map((project: Project, index: number) => (

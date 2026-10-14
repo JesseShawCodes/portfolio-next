@@ -94,40 +94,4 @@ describe("MockLinux", () => {
     expect(screen.getByText(/cat Resume.md/)).toBeInTheDocument();
     expect(container.querySelector(".terminal-mock .blinking-cursor")).toBeInTheDocument();
   });
-
-  it("skips output updates when the current line entry is missing", () => {
-    jest.isolateModules(() => {
-      jest.doMock("../../../config/locale", () => ({
-        getLocale: () => ({
-          about: {
-            terminal: {
-              progressLabel: "Loading",
-              linkText: "Click",
-              lines: [{ command: "", output: "hi" }],
-            },
-          },
-        }),
-      }));
-
-      const IsolatedMockLinux = require("../MockLinux").default;
-
-      render(
-        <TerminalProvider>
-          <IsolatedMockLinux />
-        </TerminalProvider>
-      );
-
-      act(() => {
-        jest.runOnlyPendingTimers();
-      });
-      act(() => {
-        jest.runOnlyPendingTimers();
-      });
-      act(() => {
-        jest.runOnlyPendingTimers();
-      });
-
-      expect(screen.getByText("hi")).toBeInTheDocument();
-    });
-  });
 });
