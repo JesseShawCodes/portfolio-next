@@ -12,6 +12,11 @@ import Script from 'next/script';
 import { TerminalProvider } from './context/TerminalContext';
 import { getLocale } from '../config/locale';
 
+// @next-codemod-ignore Cache Components adoption: this segment temporarily allows blocking.
+// Remove this opt-out after verifying the segment passes validation without it.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 const { site } = getLocale();
 
 export const metadata = {

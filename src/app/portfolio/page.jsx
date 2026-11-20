@@ -5,6 +5,11 @@ import Project from "./projects";
 import cmsMock from "../../config/content.json";
 import { getLocale } from "../../config/locale";
 
+// @next-codemod-ignore Cache Components adoption: this segment temporarily allows blocking.
+// Remove this opt-out after verifying the segment passes validation without it.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 function sortRepos(repos) {
   return [...repos].sort((a, b) => {
     if (a.pinned && !b.pinned) return -1;
