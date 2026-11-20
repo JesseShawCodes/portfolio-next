@@ -1,16 +1,11 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTerminal } from '@fortawesome/free-solid-svg-icons';
 import { useTerminal } from '../../context/TerminalContext';
 
 function TerminalLoadAll() {
   const { terminalLoadAll, loadAllTerminalContent } = useTerminal();
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   return (
     !terminalLoadAll && (

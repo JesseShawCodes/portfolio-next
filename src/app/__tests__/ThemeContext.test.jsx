@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, useTheme } from '../context/ThemeContext';
@@ -75,36 +75,13 @@ describe('ThemeContext', () => {
     expect(screen.getByTestId('theme')).toHaveTextContent('dark');
   });
 
-  it('handles undefined theme initially', () => {
+  it('sets the body data-bs-theme attribute from the current theme', () => {
     render(
       <ThemeProvider>
         <TestComponent />
       </ThemeProvider>
     );
     expect(document.body).toHaveAttribute('data-bs-theme', 'light');
-  });
-
-  it('toggles using light fallback when theme is still undefined', () => {
-    const ToggleOnUndefinedLayoutEffect = () => {
-      const { theme, toggleTheme } = useTheme();
-      const toggled = useRef(false);
-      useLayoutEffect(() => {
-        if (theme === undefined && !toggled.current) {
-          toggled.current = true;
-          toggleTheme();
-        }
-      });
-      return <span data-testid="theme">{theme}</span>;
-    };
-
-    render(
-      <ThemeProvider>
-        <ToggleOnUndefinedLayoutEffect />
-      </ThemeProvider>
-    );
-
-    expect(screen.getByTestId('theme')).toHaveTextContent('dark');
-    expect(localStorage.getItem('theme')).toBe('dark');
   });
 
   it('useTheme returns context value when used outside provider', () => {

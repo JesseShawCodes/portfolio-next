@@ -10,42 +10,29 @@ const aboutMeLines = getLocale().about.terminal.lines;
 
 // Disable animations for testing purposes. Always false in production
 const Terminal = ({ disableAnimations = false }) => {
+  const { terminalLoadAll } = useTerminal();
+  const skipAnimations = disableAnimations || terminalLoadAll;
+
   const [displayedLines, setDisplayedLines] = useState([]);
-  const [currentLine, setCurrentLine] = useState("");
   const [lineIndex, setLineIndex] = useState(0);
-  // 
   const [charIndex, setCharIndex] = useState(0);
   const [outputCharIndex, setOutputCharIndex] = useState(0);
   const [isCommandDone, setIsCommandDone] = useState(false);
 
-  const [showProgress, setShowProgress] = useState(false);
-
-  const { terminalLoadAll } = useTerminal();
-  if (terminalLoadAll) {
-    disableAnimations = true;
-  }
-
   useEffect(() => {
-    if (lineIndex >= aboutMeLines.length) return;
+    if (skipAnimations || lineIndex >= aboutMeLines.length) return;
 
     const { command, output, link, picture, progress } = aboutMeLines[lineIndex];
-
-    if (disableAnimations) {
-      setDisplayedLines(aboutMeLines);
-      setLineIndex(aboutMeLines.length);
-      return;
-    }
 
     if (!isCommandDone) {
       // Typing command
       if (charIndex < command.length) {
         const timeout = setTimeout(() => {
-          setCurrentLine((prev) => {
-            return prev + command[charIndex];
-          });
-          setDisplayedLines((prev) => {
-            return [...prev.slice(0, lineIndex), { command: currentLine + command[charIndex], output: "", link, picture, progress }]
-          });
+          const nextCommand = command.slice(0, charIndex + 1);
+          setDisplayedLines((prev) => [
+            ...prev.slice(0, lineIndex),
+            { command: nextCommand, output: "", link, picture, progress },
+          ]);
           setCharIndex(charIndex + 1);
         }, 100);
         return () => clearTimeout(timeout);
@@ -53,7 +40,6 @@ const Terminal = ({ disableAnimations = false }) => {
         // Command done
         const timeout = setTimeout(() => {
           setIsCommandDone(true);
-          progress && setShowProgress(true);
         }, 100);
         return () => clearTimeout(timeout);
       }
@@ -77,37 +63,43 @@ const Terminal = ({ disableAnimations = false }) => {
         return () => clearTimeout(timeout);
       } else {
         // Output done, move to next line
-        lineDone()
+        const timeout = setTimeout(() => {
+          setCharIndex(0);
+          setOutputCharIndex(0);
+          setIsCommandDone(false);
+          setLineIndex((prev) => prev + 1);
+        }, 0);
+        return () => clearTimeout(timeout);
       }
     }
-  }, [lineIndex, charIndex, outputCharIndex, isCommandDone, disableAnimations]);
+  }, [
+    lineIndex,
+    charIndex,
+    outputCharIndex,
+    isCommandDone,
+    skipAnimations,
+  ]);
 
-  function lineDone() {
-    setCurrentLine("");
-    setCharIndex(0);
-    setOutputCharIndex(0);
-    setIsCommandDone(false);
-    setLineIndex(lineIndex + 1);
-    setShowProgress(false);
-  }
+  const linesToRender = skipAnimations ? aboutMeLines : displayedLines;
+  const showFinalCursor = skipAnimations || lineIndex >= aboutMeLines.length;
 
   return (
     <div
       className="terminal-mock"
     >
       {/* Completed Command Lines*/}
-      {displayedLines.map((line, i) => (
+      {linesToRender.map((line, i) => (
         <div key={i}>
           <TerminalLine line={line}/>
-          <TerminalOutput output={line} disableAnimations={disableAnimations} />
+          <TerminalOutput output={line} disableAnimations={skipAnimations} />
         </div>
       ))}
 
-      {lineIndex < aboutMeLines.length && isCommandDone && (
+      {!skipAnimations && lineIndex < aboutMeLines.length && isCommandDone && (
         <BlinkingCursor />
       )}
       {
-        lineIndex >= aboutMeLines.length && <BlinkingCursorFinal />
+        showFinalCursor && <BlinkingCursorFinal />
       }
     </div>
   );

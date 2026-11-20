@@ -17,10 +17,11 @@ const aboutMeLines = getLocale().about.terminal.lines;
 function advanceTerminalAnimation() {
   let steps = 0;
   for (const line of aboutMeLines) {
-    steps += line.command.length + 1;
+    steps += line.command.length + 1; // type command + mark command done
     if (line.output) {
       steps += line.output.length;
     }
+    steps += 1; // advance to next line
   }
   for (let i = 0; i < steps; i++) {
     act(() => {

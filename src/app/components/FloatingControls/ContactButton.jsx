@@ -1,17 +1,14 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { getLocale } from '../../../config/locale';
+import { useIsClient } from '../../hooks/useIsClient';
 
 function ContactButton({ openModal }) {
   const { contact } = getLocale();
   const [showButton] = useState(true);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const isMounted = useIsClient();
 
   return (
     showButton && isMounted && (
