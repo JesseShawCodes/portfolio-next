@@ -1,7 +1,15 @@
 import { render, screen } from '@testing-library/react';
 import Footer from '../components/Footer';
+import { getLocale } from '../../config/locale';
 
 describe('Footer', () => {
+  const originalEnv = process.env;
+  const { site } = getLocale();
+
+  afterEach(() => {
+    process.env = originalEnv;
+  });
+
   it('renders the footer component', () => {
     render(<Footer />);
     expect(screen.getByRole('contentinfo')).toBeInTheDocument();
@@ -10,6 +18,23 @@ describe('Footer', () => {
   it('displays the copyright text', () => {
     render(<Footer />);
     expect(screen.getByText(/© 2026/)).toBeInTheDocument();
+  });
+
+  it('falls back to the locale site name when NEXT_PUBLIC_NAME is unset', () => {
+    process.env = { ...originalEnv };
+    delete process.env.NEXT_PUBLIC_NAME;
+
+    render(<Footer />);
+
+    expect(screen.getByText(new RegExp(`© 2026 ${site.name}`))).toBeInTheDocument();
+  });
+
+  it('uses NEXT_PUBLIC_NAME when set', () => {
+    process.env = { ...originalEnv, NEXT_PUBLIC_NAME: 'Custom Name' };
+
+    render(<Footer />);
+
+    expect(screen.getByText(/© 2026 Custom Name/)).toBeInTheDocument();
   });
 
   it('renders social media links', () => {

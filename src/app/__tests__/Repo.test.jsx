@@ -46,4 +46,21 @@ describe('Repo component', () => {
 
     expect(screen.queryByText('Recent Commits:')).not.toBeInTheDocument();
   });
+
+  it('hides optional sections when language, description, topics, and commits are missing', () => {
+    render(
+      <Repo
+        repo={{
+          name: 'minimal-repo',
+          pinned: false,
+          url: 'https://github.com/test/minimal-repo',
+        }}
+      />
+    );
+
+    expect(screen.getByText('minimal-repo')).toBeInTheDocument();
+    expect(screen.queryByText('Language:')).not.toBeInTheDocument();
+    expect(screen.queryByText('Technologies Used:')).not.toBeInTheDocument();
+    expect(screen.queryByText('Recent Commits:')).not.toBeInTheDocument();
+  });
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { renderToString } from 'react-dom/server';
 import '@testing-library/jest-dom';
 import { ThemeProvider, useTheme } from '../context/ThemeContext';
 
@@ -92,5 +93,14 @@ describe('ThemeContext', () => {
 
     render(<OutsideProviderComponent />);
     expect(screen.getByTestId('context')).toHaveTextContent('none');
+  });
+
+  it('uses the light theme snapshot during SSR', () => {
+    const html = renderToString(
+      <ThemeProvider>
+        <TestComponent />
+      </ThemeProvider>
+    );
+    expect(html).toContain('light');
   });
 });

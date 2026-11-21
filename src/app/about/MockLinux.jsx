@@ -49,13 +49,11 @@ const Terminal = ({ disableAnimations = false }) => {
         const timeout = setTimeout(() => {
           setDisplayedLines((prev) => {
             const newLines = [...prev];
-            if (newLines[lineIndex]) {
-              newLines[lineIndex] = {
-                ...newLines[lineIndex],
-                output: newLines[lineIndex].output + output[outputCharIndex],
-                finalOutput: output,
-              };
-            }
+            newLines[lineIndex] = {
+              ...newLines[lineIndex],
+              output: newLines[lineIndex].output + output[outputCharIndex],
+              finalOutput: output,
+            };
             return newLines;
           });
           setOutputCharIndex(outputCharIndex + 1);

@@ -6,11 +6,7 @@ import cmsMock from "../../config/content.json";
 import { getLocale } from "../../config/locale";
 
 function sortRepos(repos) {
-  return [...repos].sort((a, b) => {
-    if (a.pinned && !b.pinned) return -1;
-    if (!a.pinned && b.pinned) return 1;
-    return 0;
-  });
+  return [...repos].sort((a, b) => Number(b.pinned) - Number(a.pinned));
 }
 
 export default function Page() {
