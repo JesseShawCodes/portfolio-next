@@ -23,8 +23,7 @@ function NavBar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <NavLink name={nav.resume} link="/resume" />
-            {/* @TODO: Uncomment this when the projects page is ready */}
-            {/* <NavLink name={nav.projects} link="/portfolio" /> */}
+            <NavLink name={nav.projects} link="/portfolio" />
             <NavLink name={nav.about} link="/about" />
           </ul>
         </div>
