@@ -1,68 +1,148 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 
-jest.mock('../../config/content.json', () => ({
-  projects: {
-    data: [
-      {
-        name: 'Mock Project',
-        description: 'A mock project',
-        link: 'https://example.com',
-        logo: { url: '/logo.png' },
-        technologies: [],
-      },
-    ],
-  },
-  repos: {
-    data: [
-      {
-        name: 'unpinned-first',
-        pinned: false,
-        url: 'https://github.com/test/unpinned-first',
-        description: 'desc',
-        language: 'JavaScript',
-        topics: [],
-        commits: [],
-      },
-      {
-        name: 'pinned-second',
-        pinned: true,
-        url: 'https://github.com/test/pinned-second',
-        description: 'desc',
-        language: 'JavaScript',
-        topics: [],
-        commits: [],
-      },
-      {
-        name: 'also-pinned',
-        pinned: true,
-        url: 'https://github.com/test/also-pinned',
-        description: 'desc',
-        language: 'JavaScript',
-        topics: [],
-        commits: [],
-      },
-    ],
-  },
+const mockFetchGitHubData = jest.fn();
+
+jest.mock('../services/fetchGitHubData', () => ({
+  fetchGitHubData: (...args) => mockFetchGitHubData(...args),
 }));
+
+jest.mock('../../config/locale', () => ({
+  getLocale: () => ({
+    site: {
+      githubUsername: 'TestUser',
+    },
+    portfolio: {
+      heading: 'Projects',
+      intro: 'Intro text',
+      githubPrompt: 'Check out my GitHub',
+      githubLinkText: 'visit my GitHub profile',
+      loading: 'Loading...',
+      projects: [
+        {
+          name: 'Mock Project',
+          description: 'A mock project',
+          link: 'https://example.com',
+          logo: { url: '/logo.png' },
+          technologies: [],
+        },
+      ],
+      repos: [
+        {
+          name: 'unpinned-first',
+          url: 'https://github.com/TestUser/unpinned-first',
+          pinned: false,
+        },
+        {
+          name: 'pinned-second',
+          url: 'https://github.com/TestUser/pinned-second',
+          pinned: true,
+        },
+        {
+          name: 'also-pinned',
+          url: 'https://github.com/TestUser/also-pinned',
+          pinned: true,
+        },
+      ],
+    },
+  }),
+}));
+
+jest.mock('../components/Repo', () => {
+  return function MockRepo({ repo }) {
+    return <h3>{repo.name}</h3>;
+  };
+});
 
 import Page from '../portfolio/page';
 
 describe('Portfolio Page', () => {
-  it('renders the portfolio page with projects and repos', () => {
-    render(<Page />);
-
-    expect(screen.getByText('Projects')).toBeInTheDocument();
-    expect(screen.getByText('Mock Project')).toBeInTheDocument();
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockFetchGitHubData.mockResolvedValue([
+      {
+        name: 'unpinned-first',
+        html_url: 'https://github.com/TestUser/unpinned-first',
+        language: 'JavaScript',
+        description: 'desc',
+        topics: [],
+      },
+      {
+        name: 'pinned-second',
+        html_url: 'https://github.com/TestUser/pinned-second',
+        language: 'JavaScript',
+        description: 'desc',
+        topics: [],
+      },
+      {
+        name: 'also-pinned',
+        html_url: 'https://github.com/TestUser/also-pinned',
+        language: 'JavaScript',
+        description: 'desc',
+        topics: [],
+      },
+      {
+        name: 'not-selected',
+        html_url: 'https://github.com/TestUser/not-selected',
+        language: 'JavaScript',
+        description: 'desc',
+        topics: [],
+      },
+    ]);
   });
 
-  it('sorts pinned repositories before unpinned ones', () => {
+  it('renders the portfolio page with projects and repos', async () => {
     render(<Page />);
+
+    expect(screen.getByText('Loading...')).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.getByText('Projects')).toBeInTheDocument();
+    });
+
+    expect(screen.getByText('Mock Project')).toBeInTheDocument();
+    expect(screen.getByText('pinned-second')).toBeInTheDocument();
+    expect(screen.queryByText('not-selected')).not.toBeInTheDocument();
+  });
+
+  it('sorts pinned repositories before unpinned ones', async () => {
+    render(<Page />);
+
+    await waitFor(() => {
+      expect(screen.getByText('pinned-second')).toBeInTheDocument();
+    });
 
     const headings = screen.getAllByRole('heading', { level: 3 });
     const repoNames = headings.map((heading) => heading.textContent);
 
     expect(repoNames.indexOf('pinned-second')).toBeLessThan(repoNames.indexOf('unpinned-first'));
     expect(repoNames.indexOf('also-pinned')).toBeLessThan(repoNames.indexOf('unpinned-first'));
+  });
+
+  it('shows an error message when GitHub fetch fails', async () => {
+    mockFetchGitHubData.mockRejectedValueOnce(new Error('GITHUB API ERROR'));
+
+    render(<Page />);
+
+    await waitFor(() => {
+      expect(screen.getByText('GITHUB API ERROR')).toBeInTheDocument();
+    });
+  });
+
+  it('defaults missing topics to an empty array', async () => {
+    mockFetchGitHubData.mockResolvedValue([
+      {
+        name: 'pinned-second',
+        html_url: 'https://github.com/TestUser/pinned-second',
+        language: 'JavaScript',
+        description: 'desc',
+      },
+    ]);
+
+    render(<Page />);
+
+    await waitFor(() => {
+      expect(screen.getByText('pinned-second')).toBeInTheDocument();
+    });
   });
 });

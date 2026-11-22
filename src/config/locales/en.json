@@ -52,7 +52,52 @@
     "intro": "My time is currently being taken up by my full time role as a Full Stack Developer at MDLive. But I do wanna make sure I am putting in extra time to keep up with new tools and work on some of my own projects to stay sharp.",
     "githubPrompt": "If you would like to keep up with all of the other work I am doing outside of my work at Amentum, please check out my GitHub projects below or",
     "githubLinkText": "visit my GitHub profile",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "projects": [
+      {
+        "name": "Dadgad",
+        "description": [
+          "Dadgad is an interactive music discovery application that brings the excitement of March Madness to music listening. Inspired by tournament-style brackets, the application lets users compare tracks head-to-head, advance their favorites through successive rounds, and ultimately crown a champion.",
+          "Built with React, Next.js, Django, and PostgreSQL, Dadgad combines an interactive frontend with a backend designed to manage bracket progression, persist tournament state, and handle the logic behind advancing tracks across rounds. Integration with the Apple Music API connects the experience to a broader music catalog, while AI-generated commentary adds another layer of personality to the competition.",
+          "The project explores the intersection of music discovery, interactive experiences, and full-stack application architecture, with an emphasis on turning subjective listening preferences into a structured, competitive, and engaging experience."
+        ],
+        "link": "https://dadgad.netlify.app",
+        "logo": {
+          "url": "/dadgad_logo.png"
+        },
+        "technologies": [
+          {
+            "title": "Frontend",
+            "list": ["React", "Next.js", "Bootstrap", "SCSS"]
+          },
+          {
+            "title": "Backend & CMS",
+            "list": ["Django", "PostgreSQL", "Python", "Celery"]
+          },
+          {
+            "title": "Tooling",
+            "list": ["Jest", "Git", "Netlify"]
+          }
+        ]
+      }
+    ],
+    "repos": [
+      {
+        "name": "portfolio-next",
+        "url": "https://github.com/JesseShawCodes/portfolio-next",
+        "pinned": true
+      },
+      {
+        "name": "juce_synth_1",
+        "url": "https://github.com/JesseShawCodes/juce_synth_1",
+        "pinned": true
+      },
+      {
+        "name": "dadgad",
+        "url": "https://github.com/JesseShawCodes/dadgad",
+        "pinned": false
+      }
+    ]
   },
   "resume": {
     "heading": "Resume",
