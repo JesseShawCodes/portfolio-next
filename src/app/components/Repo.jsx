@@ -1,16 +1,49 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { formatMyDateDetail } from "../services/services";
 import TechnologyItem from "./TechnologyItem";
+import { fetchGitHubData } from "../services/fetchGitHubData";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapPin } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-export default function Repo({ repo }) {
-  const commits = repo.commits ?? [];
+export default function Repo({ repo, githubUsername }) {
   const topics = repo.topics ?? [];
+  const canFetch = Boolean(githubUsername && repo.name);
+  const [commits, setCommits] = useState([]);
+  const [isLoading, setIsLoading] = useState(canFetch);
+
+  useEffect(() => {
+    if (!canFetch) {
+      return;
+    }
+
+    const fetchCommits = async () => {
+      try {
+        setIsLoading(true);
+        const data = await fetchGitHubData(
+          `https://api.github.com/repos/${githubUsername}/${repo.name}/commits?per_page=3`
+        );
+
+        setCommits(
+          data.map((commit) => ({
+            sha: commit.sha,
+            url: commit.html_url,
+            date: commit.commit?.author?.date,
+            message: commit.commit?.message,
+          }))
+        );
+      } catch {
+        setCommits([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCommits();
+  }, [canFetch, githubUsername, repo.name]);
 
   return (
     <section className="card my-4 mx-3 p-3 card-top-border shadow-lg shadow-dark-mode-white">
@@ -40,7 +73,13 @@ export default function Repo({ repo }) {
           </div>
         </div>
       ) : null}
-      {commits.length ? (
+      {isLoading ? (
+        <div>
+          <h4>Recent Commits:</h4>
+          <p>Loading commits...</p>
+        </div>
+      ) : null}
+      {!isLoading && commits.length ? (
         <div>
           <h4>Recent Commits:</h4>
           <ul className="p-0">

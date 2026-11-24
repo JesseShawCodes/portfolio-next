@@ -1,16 +1,16 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState, useSyncExternalStore } from 'react';
 import ReactDOM from 'react-dom';
 
-const Modal = ({ children, onClose }) => {
-  const modalRef = useRef(null);
-  const [mounted, setMounted] = useState(false);
-  const [show, setShow] = useState(true);
+const emptySubscribe = () => () => {};
 
-  useEffect(() => {
-    modalRef.current = document.getElementById('modal-root');
-    setMounted(true);
-  }, []);
+const Modal = ({ children, onClose }) => {
+  const modalRoot = useSyncExternalStore(
+    emptySubscribe,
+    () => document.getElementById('modal-root'),
+    () => null,
+  );
+  const [show, setShow] = useState(true);
 
   const handleClose = () => {
     setShow(false);
@@ -20,7 +20,8 @@ const Modal = ({ children, onClose }) => {
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
-        handleClose();
+        setShow(false);
+        setTimeout(onClose, 300);
       }
     };
 
@@ -31,7 +32,7 @@ const Modal = ({ children, onClose }) => {
     };
   }, [onClose]);
 
-  if (!mounted || !modalRef.current) {
+  if (!modalRoot) {
     return null;
   }
 
@@ -49,7 +50,7 @@ const Modal = ({ children, onClose }) => {
         </div>
       </div>
     </div>,
-    modalRef.current
+    modalRoot
   );
 };
 

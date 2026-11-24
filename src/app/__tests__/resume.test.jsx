@@ -58,8 +58,11 @@ beforeEach(() => {
     getCmsEducations.mockResolvedValue(mockEducations);
 });
 
-jest.mock('react-markdown', () => (props) => {
-  return <div data-testid="mock-markdown">{props.children}</div>;
+jest.mock('react-markdown', () => {
+  function ReactMarkdownMock(props) {
+    return <div data-testid="mock-markdown">{props.children}</div>;
+  }
+  return ReactMarkdownMock;
 });
 
 describe('Resume Page', () => {

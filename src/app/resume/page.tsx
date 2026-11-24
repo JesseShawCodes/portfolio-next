@@ -27,7 +27,7 @@ async function ResumePage() {
   }
 
   const education = await getEducation();
-  if (education) {
+  if (education.length > 0) {
     education.sort((a: Education, b: Education) =>  b.startDate.localeCompare(a.startDate));
   }
 

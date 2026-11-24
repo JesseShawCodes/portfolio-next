@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import ProgressBar from "./ProgressBar";
 import { getLocale } from "../../config/locale";
@@ -9,7 +10,15 @@ function TerminalOutput({ output, disableAnimations }) {
   let link;
   let progress;
   if (output.picture !== undefined && disableAnimations) {
-    image = <img src={output.picture} alt={output.output} style={{ width: "300px", borderRadius: "8px", marginTop: "10px" }} />;
+    image = (
+      <Image
+        src={output.picture}
+        alt={output.output}
+        width={300}
+        height={300}
+        style={{ width: "300px", height: "auto", borderRadius: "8px", marginTop: "10px" }}
+      />
+    );
   }
   if (output.output === output.finalOutput && output.picture || output.link || output.progress) {
     if (output.progress) {
@@ -18,7 +27,15 @@ function TerminalOutput({ output, disableAnimations }) {
       />;
     }
     if (output.picture !== undefined) {
-      image = <img src={output.picture} alt={output.output} style={{ width: "300px", borderRadius: "8px", marginTop: "10px" }} />;
+      image = (
+        <Image
+          src={output.picture}
+          alt={output.output}
+          width={300}
+          height={300}
+          style={{ width: "300px", height: "auto", borderRadius: "8px", marginTop: "10px" }}
+        />
+      );
     }
     if (output.link) {
       link = <Link href={output.link}>{linkText}</Link>;

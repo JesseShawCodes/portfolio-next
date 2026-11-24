@@ -1,38 +1,44 @@
 "use client"
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useSyncExternalStore } from "react";
 
 const ThemeContext = createContext();
+const THEME_CHANGE_EVENT = "theme-change";
+
+function getThemeSnapshot() {
+  return localStorage.getItem("theme") ?? "light";
+}
+
+function getServerThemeSnapshot() {
+  return "light";
+}
+
+function subscribeToTheme(onStoreChange) {
+  window.addEventListener("storage", onStoreChange);
+  window.addEventListener(THEME_CHANGE_EVENT, onStoreChange);
+  return () => {
+    window.removeEventListener("storage", onStoreChange);
+    window.removeEventListener(THEME_CHANGE_EVENT, onStoreChange);
+  };
+}
 
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(undefined);
+  const theme = useSyncExternalStore(
+    subscribeToTheme,
+    getThemeSnapshot,
+    getServerThemeSnapshot,
+  );
 
-  // Toggle Theme
   const toggleTheme = () => {
-    // Ensure theme is not undefined before toggling
-    const currentTheme = theme === undefined ? "light" : theme; // Fallback if theme is still undefined
-    const newTheme = currentTheme === "light" ? "dark" : "light";
-    setTheme(newTheme);
+    const newTheme = theme === "light" ? "dark" : "light";
     localStorage.setItem("theme", newTheme);
-  }
+    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
+  };
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme) {
-      setTheme(storedTheme);
-    } else {
-      setTheme("light");
-      localStorage.setItem("theme", "light")
-    }
-    // document.body.setAttribute("data-bs-theme", theme);
+    document.body.setAttribute("data-bs-theme", theme);
   }, [theme]);
-
-  useEffect(() => {
-    if (theme !== undefined) {
-      document.body.setAttribute("data-bs-theme", theme);
-    }
-  })
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
