@@ -11,12 +11,12 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 export default function Repo({ repo, githubUsername }) {
   const topics = repo.topics ?? [];
+  const canFetch = Boolean(githubUsername && repo.name);
   const [commits, setCommits] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(canFetch);
 
   useEffect(() => {
-    if (!githubUsername || !repo.name) {
-      setIsLoading(false);
+    if (!canFetch) {
       return;
     }
 
@@ -43,7 +43,7 @@ export default function Repo({ repo, githubUsername }) {
     };
 
     fetchCommits();
-  }, [githubUsername, repo.name]);
+  }, [canFetch, githubUsername, repo.name]);
 
   return (
     <section className="card my-4 mx-3 p-3 card-top-border shadow-lg shadow-dark-mode-white">
