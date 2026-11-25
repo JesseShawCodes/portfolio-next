@@ -79,6 +79,30 @@
             "list": ["Jest", "Git", "Netlify"]
           }
         ]
+      },
+      {
+        "name": "PixelBloom",
+        "description": [
+          "PixelBloom is a generative art studio where you tune algorithms, seeds, and palettes to create compositions, then export them as PNG or SVG. Generation runs in the browser via a Web Worker or on a FastAPI backend, with a local gallery for reloading saved pieces."
+        ],
+        "link": "https://pixel-bloom.netlify.app",
+        "logo": {
+          "url": "/pixelbloom_logo.png"
+        },
+        "technologies": [
+          {
+            "title": "Frontend",
+            "list": ["React", "Next.js", "TypeScript", "Tailwind CSS"]
+          },
+          {
+            "title": "Backend",
+            "list": ["FastAPI", "Python", "Pydantic"]
+          },
+          {
+            "title": "Tooling",
+            "list": ["Jest", "Playwright", "Pytest", "Docker", "Netlify", "GitHub Actions"]
+          }
+        ]
       }
     ],
     "repos": [
