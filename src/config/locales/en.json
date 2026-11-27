@@ -55,6 +55,30 @@
     "loading": "Loading...",
     "projects": [
       {
+        "name": "PixelBloom",
+        "description": [
+          "PixelBloom is a generative art studio where you tune algorithms, seeds, and palettes to create compositions, then export them as PNG or SVG. Generation runs in the browser via a Web Worker or on a FastAPI backend, with a local gallery for reloading saved pieces."
+        ],
+        "link": "https://pixel-bloom.netlify.app",
+        "logo": {
+          "url": "/bloom_logo.png"
+        },
+        "technologies": [
+          {
+            "title": "Frontend",
+            "list": ["React", "Next.js", "TypeScript", "Tailwind CSS"]
+          },
+          {
+            "title": "Backend",
+            "list": ["FastAPI", "Python", "Pydantic"]
+          },
+          {
+            "title": "Tooling",
+            "list": ["Jest", "Playwright", "Pytest", "Docker", "Netlify", "GitHub Actions"]
+          }
+        ]
+      },
+      {
         "name": "Dadgad",
         "description": [
           "Dadgad is an interactive music discovery application that brings the excitement of March Madness to music listening. Inspired by tournament-style brackets, the application lets users compare tracks head-to-head, advance their favorites through successive rounds, and ultimately crown a champion.",
@@ -77,30 +101,6 @@
           {
             "title": "Tooling",
             "list": ["Jest", "Git", "Netlify"]
-          }
-        ]
-      },
-      {
-        "name": "PixelBloom",
-        "description": [
-          "PixelBloom is a generative art studio where you tune algorithms, seeds, and palettes to create compositions, then export them as PNG or SVG. Generation runs in the browser via a Web Worker or on a FastAPI backend, with a local gallery for reloading saved pieces."
-        ],
-        "link": "https://pixel-bloom.netlify.app",
-        "logo": {
-          "url": "/bloom_logo.png"
-        },
-        "technologies": [
-          {
-            "title": "Frontend",
-            "list": ["React", "Next.js", "TypeScript", "Tailwind CSS"]
-          },
-          {
-            "title": "Backend",
-            "list": ["FastAPI", "Python", "Pydantic"]
-          },
-          {
-            "title": "Tooling",
-            "list": ["Jest", "Playwright", "Pytest", "Docker", "Netlify", "GitHub Actions"]
           }
         ]
       }
@@ -171,7 +171,6 @@
     "lead": "Sorry, we couldn't find that page. It may have been moved, renamed, or the address might be mistyped.",
     "suggestionsHeading": "This may be more of what you're looking for",
     "backHome": "Back to home",
-    "destinations": [
-    ]
+    "destinations": []
   }
 }
