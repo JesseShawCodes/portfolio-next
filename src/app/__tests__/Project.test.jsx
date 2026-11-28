@@ -56,7 +56,7 @@ describe('Project', () => {
       logo: { url: '/bloom.png' },
       description: 'Generative art',
       link: 'https://pixel-bloom.example',
-      github: 'https://github.com/JesseShawCodes/generative-art-app',
+      github: 'https://github.com/JesseShawCodes/pixel-bloom',
       updatedAt: '2026-11-26T20:29:38Z',
       technologies: [],
     };
@@ -66,7 +66,7 @@ describe('Project', () => {
     const githubLink = screen.getByText('GitHub');
     expect(githubLink.closest('a')).toHaveAttribute(
       'href',
-      'https://github.com/JesseShawCodes/generative-art-app'
+      'https://github.com/JesseShawCodes/pixel-bloom'
     );
     expect(screen.getByText(/Last updated/)).toBeInTheDocument();
     expect(screen.getByText(/November 26, 2026/)).toBeInTheDocument();
