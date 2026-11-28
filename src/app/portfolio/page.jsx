@@ -16,6 +16,7 @@ export default function Page() {
   const selectedRepos = portfolio.repos;
 
   const [repositories, setRepositories] = useState([]);
+  const [projectsWithMeta, setProjectsWithMeta] = useState(projects);
   const [isLoadingGithub, setIsLoadingGithub] = useState(true);
   const [isErrorGithub, setIsErrorGithub] = useState(null);
 
@@ -27,6 +28,22 @@ export default function Page() {
 
         const githubFetch = await fetchGitHubData(
           `https://api.github.com/users/${site.githubUsername}/repos?per_page=100&sort=updated`
+        );
+
+        setProjectsWithMeta(
+          projects.map((project) => {
+            if (!project.github) return project;
+
+            const matchedRepo = githubFetch.find(
+              (repo) =>
+                repo.html_url.toLowerCase() === project.github.toLowerCase()
+            );
+
+            return {
+              ...project,
+              updatedAt: matchedRepo?.pushed_at ?? matchedRepo?.updated_at ?? null,
+            };
+          })
         );
 
         const githubRepos = sortRepos(
@@ -62,7 +79,7 @@ export default function Page() {
     };
 
     fetchData();
-    // selectedRepos comes from static locale config and is stable across renders
+    // projects/selectedRepos come from static locale config and are stable across renders
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [site.githubUsername]);
 
@@ -77,7 +94,7 @@ export default function Page() {
         <p>{portfolio.intro}</p>
 
         <div>
-          {projects.map((project, index) => (
+          {projectsWithMeta.map((project, index) => (
             <Project project={project} key={index} />
           ))}
         </div>

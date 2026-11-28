@@ -52,6 +52,8 @@
     "intro": "My professional experience is rooted in Ruby on Rails, but I use my personal projects as an opportunity to explore other technologies, languages, and frameworks. From building applications with Python and Django to experimenting with new tools and technologies, these projects allow me to broaden my skill set, explore different approaches to software development, and continue growing as a developer outside of my full time role as a Full Stack Developer at MDLive.",
     "githubPrompt": "If you would like to keep up with all of the other work I am doing outside of my work at Amentum, please check out my GitHub projects below or",
     "githubLinkText": "visit my GitHub profile",
+    "githubRepoLabel": "GitHub",
+    "lastUpdatedLabel": "Last updated",
     "loading": "Loading...",
     "projects": [
       {
@@ -60,6 +62,7 @@
           "PixelBloom is a generative art studio where you tune algorithms, seeds, and palettes to create compositions, then export them as PNG or SVG. Generation runs in the browser via a Web Worker or on a FastAPI backend, with a local gallery for reloading saved pieces."
         ],
         "link": "https://pixel-bloom.netlify.app",
+        "github": "https://github.com/JesseShawCodes/generative-art-app",
         "logo": {
           "url": "/bloom_logo.png"
         },
@@ -86,6 +89,7 @@
           "The project explores the intersection of music discovery, interactive experiences, and full-stack application architecture, with an emphasis on turning subjective listening preferences into a structured, competitive, and engaging experience."
         ],
         "link": "https://dadgad.netlify.app",
+        "github": "https://github.com/JesseShawCodes/Dadgad",
         "logo": {
           "url": "/dadgad_logo.png"
         },

@@ -18,11 +18,14 @@ jest.mock('../../config/locale', () => ({
       githubPrompt: 'Check out my GitHub',
       githubLinkText: 'visit my GitHub profile',
       loading: 'Loading...',
+      githubRepoLabel: 'GitHub',
+      lastUpdatedLabel: 'Last updated',
       projects: [
         {
           name: 'Mock Project',
           description: 'A mock project',
           link: 'https://example.com',
+          github: 'https://github.com/TestUser/mock-project',
           logo: { url: '/logo.png' },
           technologies: [],
         },
@@ -88,6 +91,15 @@ describe('Portfolio Page', () => {
         description: 'desc',
         topics: [],
       },
+      {
+        name: 'mock-project',
+        html_url: 'https://github.com/TestUser/mock-project',
+        language: 'TypeScript',
+        description: 'project desc',
+        topics: [],
+        pushed_at: '2026-11-20T12:00:00Z',
+        updated_at: '2026-11-19T12:00:00Z',
+      },
     ]);
   });
 
@@ -101,6 +113,12 @@ describe('Portfolio Page', () => {
     });
 
     expect(screen.getByText('Mock Project')).toBeInTheDocument();
+    expect(screen.getByText('GitHub').closest('a')).toHaveAttribute(
+      'href',
+      'https://github.com/TestUser/mock-project'
+    );
+    expect(screen.getByText(/Last updated/)).toBeInTheDocument();
+    expect(screen.getByText(/November 20, 2026/)).toBeInTheDocument();
     expect(screen.getByText('pinned-second')).toBeInTheDocument();
     expect(screen.queryByText('not-selected')).not.toBeInTheDocument();
   });

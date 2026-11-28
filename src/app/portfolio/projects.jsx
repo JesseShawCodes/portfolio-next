@@ -2,10 +2,16 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import TechnologyItem from "../components/TechnologyItem";
 import DescriptionContent from "../components/DescriptionContent";
+import { formatMyDateDetail } from "../services/services";
+import { getLocale } from "../../config/locale";
 
 function Project({project}) {
+  const { portfolio } = getLocale();
+
   return (
     <div className="project card my-4 card-top-border shadow-lg shadow-dark-mode-white">
       <div className="card-header">
@@ -16,11 +22,22 @@ function Project({project}) {
         <div>
           <DescriptionContent description={project.description} asParagraphs />
         </div>
-        <div>
+        <div className="d-flex flex-column gap-1">
           <Link href={project.link} target="_blank">
-          {project.link}
+            {project.link}
           </Link>
+          {project.github ? (
+            <Link href={project.github} target="_blank" className="link-underline link-underline-opacity-0">
+              <FontAwesomeIcon icon={faGithub} className="me-1" />
+              {portfolio.githubRepoLabel}
+            </Link>
+          ) : null}
         </div>
+        {project.updatedAt ? (
+          <p className="mt-3 mb-0 text-body-secondary">
+            {portfolio.lastUpdatedLabel} {formatMyDateDetail(project.updatedAt)}
+          </p>
+        ) : null}
       </div>
       <div className="card-footer text-center user-select-none">
         <>
