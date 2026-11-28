@@ -145,4 +145,22 @@ describe('Portfolio Page', () => {
       expect(screen.getByText('pinned-second')).toBeInTheDocument();
     });
   });
+
+  it('matches selected repos case-insensitively by URL', async () => {
+    mockFetchGitHubData.mockResolvedValue([
+      {
+        name: 'Unpinned-First',
+        html_url: 'https://github.com/TestUser/Unpinned-First',
+        language: 'JavaScript',
+        description: 'desc',
+        topics: [],
+      },
+    ]);
+
+    render(<Page />);
+
+    await waitFor(() => {
+      expect(screen.getByText('unpinned-first')).toBeInTheDocument();
+    });
+  });
 });

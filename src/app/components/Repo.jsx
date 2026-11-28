@@ -96,7 +96,7 @@ export default function Repo({ repo, githubUsername }) {
                   </Link>
                   {formatMyDateDetail(commit.date)}
                 </h5>
-                <div>{commit.message}</div>
+                <div style={{ whiteSpace: "pre-wrap" }}>{commit.message}</div>
               </li>
             ))}
           </ul>

@@ -33,7 +33,8 @@ export default function Page() {
           githubFetch
             .map((repo) => {
               const selectedRepo = selectedRepos.find(
-                (selected) => selected.url === repo.html_url
+                (selected) =>
+                  selected.url.toLowerCase() === repo.html_url.toLowerCase()
               );
               if (!selectedRepo) return null;
 

@@ -66,6 +66,31 @@ describe('Repo component', () => {
     );
   });
 
+  it('preserves newlines in commit messages', async () => {
+    mockFetchGitHubData.mockResolvedValue([
+      {
+        sha: 'abcdef1234567890',
+        html_url: 'https://github.com/test/test-repo/commit/abcdef1234567890',
+        commit: {
+          author: { date: '2025-09-04T12:34:56Z' },
+          message: 'Subject line\n\n* Bullet one\n* Bullet two',
+        },
+      },
+    ]);
+
+    render(<Repo repo={mockRepo} githubUsername="test" />);
+
+    let message;
+    await waitFor(() => {
+      message = screen.getByText((_, element) =>
+        element?.textContent === 'Subject line\n\n* Bullet one\n* Bullet two'
+      );
+      expect(message).toBeInTheDocument();
+    });
+
+    expect(message).toHaveStyle({ whiteSpace: 'pre-wrap' });
+  });
+
   it('hides commits section when fetch returns no commits', async () => {
     mockFetchGitHubData.mockResolvedValue([]);
 
